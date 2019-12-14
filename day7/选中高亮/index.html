@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width:100px;
+			height:100px;
+			background-color:red;
+			margin:5px;
+			float: left;
+		}
+		div.active{
+			background-color: blue;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script>
+		// 1、获取所有要操作的元素
+		var divs = [...document.querySelectorAll("div")]
+		// 2、绑定事件
+		divs.forEach(function(item){
+			item.onclick = function(){
+				// 删除类名 取消高亮
+				divs.forEach(function(el){
+					el.classList.remove("active")
+				})
+				//添加类名 高亮
+				item.classList.add("active");
+			}
+		})
+
+
+	</script>
+</body>
+</html>

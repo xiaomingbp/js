@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="box"></div>
+	<script type="text/javascript">
+		var arr = ["张三","李四","王五","赵六","马奇","幺爸","料酒"];
+		var box = document.querySelector(".box");
+
+		//滚动
+		var t = setInterval(function(){
+			box.innerHTML = arr[Math.floor(Math.random() * arr.length)]
+		},30);
+
+		//停止
+		setTimeout(function(){
+			//停止间歇计时器
+			clearInterval(t);
+		},3000)
+
+
+
+		/*
+		
+		setInterval(show,1000)
+		function show(){	
+
+		}
+
+		简写方式：
+			var t1 = setInterval(function(){},1000)
+			var t = setInterval(function(){},1000)	   clearInterval(t1)
+
+
+			var t2 = setTimeout(function(){},1000)   clearTimeout(t2)
+
+
+
+
+
+
+
+
+
+
+
+		*/
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" class="btn" value="按钮">
+
+
+	<script>
+
+		/*
+			DOMO级事假：
+				语法：
+					元素.on + 事件类型 = 函数名(或匿名函数)
+
+			
+		 */
+		var btn = document.querySelector(".btn")
+		btn.onclick = function(){
+			alert(13)
+		}
+		btn.onclick = function(){
+			alert(34)
+		}
+
+		/*
+			缺点：在一个元素上只能绑定一个相同类型的事件。
+
+			相同类型？
+
+		 */
+
+	</script>
+</body>
+</html>

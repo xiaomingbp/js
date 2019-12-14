@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			background-color: red;
+			height:600px;
+		}
+		.green{
+			background-color: green;
+			height:600px;
+		}
+		.blue{
+			background-color: blue;
+			height:600px;
+		}
+		.yellow{
+			background-color: yellow;
+			height:600px;
+		}
+		.pink{
+			background-color: pink;
+			height:600px;
+		}
+		.nav{
+			width:60px;
+			position: fixed;
+			top:200px;
+			left:100px;
+			border:1px solid #000;
+		}
+		.white{
+			height:500px;
+		}
+		.nav>div{
+			height:60px;
+			background-color: #aaa;
+			margin:1px;
+		}
+		.nav>div.active{
+			background-color: #888;
+		}
+		.returnTop{
+			width:60px;
+			height:60px;
+			background-color: #000;
+			position: fixed;
+			right:100px;
+			bottom:100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="con">
+		<div class="red"></div>
+		<div class="green"></div>
+		<div class="blue"></div>
+		<div class="yellow"></div>
+		<div class="pink"></div>
+	</div>
+	<div class="white"></div>
+	<div class="nav">
+		<div>F1</div>
+		<div>F2</div>
+		<div>F3</div>
+		<div>F4</div>
+		<div>F5</div>
+	</div>
+
+	<div class="returnTop"></div>
+
+	<script>
+		var cons = [...document.querySelectorAll(".con div")];
+		var navs = [...document.querySelectorAll(".nav div")];
+
+		var returntop = document.querySelector(".returnTop");
+
+		navs.forEach(function(item,index){
+			item.addEventListener("click",function(){
+
+				navs.forEach(function(el,i){
+					navs[i].classList.remove("active");
+				})
+				navs[index].classList.add("active");
+
+				document.body.scrollTop = document.documentElement.scrollTop = cons[index].offsetTop;
+			});
+		});
+
+		//滚动条上下滚动时 高亮菜单
+		document.addEventListener("scroll",function(){
+			//获取滚动条的偏移量
+			var pos = document.body.scrollTop + document.documentElement.scrollTop;
+
+			cons.forEach(function(item,index){
+				//比较楼层的偏移量和滚动条的偏移量 
+				if(pos >= item.offsetTop){
+
+					cons.forEach(function(el,i){
+						navs[i].classList.remove("active");
+					})
+					navs[index].classList.add("active");
+
+				}else{
+					navs[index].classList.remove("active");
+				}
+			})
+		})
+
+		//返回顶部
+		returntop.addEventListener("click",function(){
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+		})
+
+	</script>
+</body>
+</html>

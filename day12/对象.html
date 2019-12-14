@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<select class="sheng">
+		<option>请选择</option>
+	</select>
+	<select class="shi">
+		<option>请选择</option>
+	</select>
+	<select class="qu">
+		<option>请选择</option>
+	</select>
+
+	<script src="city.js"></script>
+	<script>
+		
+		var liandong = {
+			arr:data,
+			sheng:document.querySelector(".sheng"),
+			shi:document.querySelector(".shi"),
+			qu:document.querySelector(".qu"),
+			init:function(){
+				this.sheng.innerHTML= "<option>请选择</option>" + this.arr.map(function(item){
+					return `<option>${item.name}</option>`
+				}).join("")
+				this.bindEvent()
+			},
+			bindEvent:function(){
+				var that = this;
+				this.sheng.addEventListener("change",function(){
+					var shengIndex =  that.sheng.selectedIndex - 1    // 获取下拉菜单里的下标  对应 数组里的下标	
+					var shengDate = that.arr[shengIndex].city;  // 从数组里读取指定下标的数据（二级数组）				
+					that.shi.innerHTML = "<option>请选择</option>" + shengDate.map(function(item){//遍历数组，渲染
+						return `<option>${item.name}</option>`
+					}).join("");
+				});
+
+				this.shi.addEventListener("change",function(){
+					var shengIndex =  that.sheng.selectedIndex - 1 // 获取下拉菜单里的下标  对应 数组里的下标
+					var shiIndex =  that.shi.selectedIndex - 1   // 获取下拉菜单里的下标  对应 数组里的下标			
+					var quDate = that.arr[shengIndex].city[shiIndex].area // 从数组里读取指定下标的数据（二级数组）在读取指定下标的数据（三级数组）					
+					that.qu.innerHTML = "<option>请选择</option>" + quDate.map(function(item){
+						return `<option>${item}</option>`
+					}).join("");
+				})
+			}
+		}
+
+		liandong.init();
+
+
+		
+
+		
+
+		
+
+
+	</script>
+</body>
+</html>

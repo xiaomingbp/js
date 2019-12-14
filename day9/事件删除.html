@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			padding: 100px;
+		}
+		.div1{
+			background-color: red;
+		}
+		.div2{
+			background-color: green;
+		}
+		.div3{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+
+	<input type="button" value="点击" class="btn">
+	<script>
+		var btn = document.querySelector(".btn")
+		/*
+			删除DOM0级事件：
+				元素.事件类型 = null;
+					例如：btn.onclick = null;
+			删除DOM2级事件：
+				元素.removeEventListener(事件类型,事件处理函数,事件流)
+					注意:元素,事件类型,事件处理函数,事件流必须跟绑定事件函数的一致，否则无法删除
+
+		 */
+
+		btn.onclick = function(){			
+			alert(123);			
+		}
+
+		
+		btn.addEventListener("click",function(){
+
+		})
+		
+	</script>
+</body>
+</html>

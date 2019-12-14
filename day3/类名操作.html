@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="box" style="border:1px solid red;"></div>
+	<script type="text/javascript">
+		var box = document.querySelector(".box");
+		//box.className = "aaa"
+		box.classList.add("aaa"); // 类列表里添加一个类名
+		box.classList.remove("box"); // 从类列表里删除一个类名
+		console.log(box.classList.contains("box")) // 判断类列表里是否有指定的类名
+		box.classList.toggle("box") // 切换类列表里的指定类名
+
+
+		box.style.width = "100px";
+		box.style.cssText = "width:100px;height:100px;background-color:red;" // 会覆盖行间原有的样式
+
+	</script>
+</body>
+</html>

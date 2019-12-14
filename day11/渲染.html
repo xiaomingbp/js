@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ul1">
+		
+	</ul>
+	<script src="data.js"></script>
+	<script>
+		var ul1 = document.querySelector(".ul1")
+		//渲染
+		ul1.innerHTML = data.map(function(item,index,self){
+			return `<li>${item}<input type="button" value="删除"></li>`		
+		}).join("")
+		//绑定事件
+		ul1.addEventListener("click",function(e){
+			if(e.target.tagName == "INPUT"){
+				e.target.parentNode.remove();
+			}
+		})
+
+	</script>
+</body>
+</html>

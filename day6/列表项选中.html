@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			padding: 0;
+			margin: 0;
+			width:300px;
+			list-style: none;
+		}
+		ul li{
+			height:30px;
+			line-height: 30px;
+			margin:1px;
+			background-color: #ddd;
+		}
+		ul li.active{
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>aaaaa</li>
+		<li>bbbbb</li>
+		<li>ccccc</li>
+		<li>ddddd</li>
+		<li>eeeee</li>
+	</ul>
+	<script>
+		var index = 0; // 下标
+		var lis = [...document.querySelectorAll("li")];	
+
+		document.addEventListener("keydown",function(e){
+			if(e.keyCode == 38){ // 
+				index--;
+				if(index < 0){
+					index = lis.length - 1;
+				}
+			}
+			if(e.keyCode == 40){
+				index++
+				if(index == lis.length){
+					index = 0
+				}
+			}
+			lis.forEach(function(item){
+				item.classList.remove("active")
+			})
+			lis[index].classList.add("active")
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="box"></div>
+	<script type="text/javascript">
+		/*
+			标准属性：
+				id
+				class
+				style
+				title
+
+			自定义属性
+				自己定义的属性
+
+		 */
+		var box = document.querySelector(".box");
+		//标准属性
+		box.id = "box_id"  // 设置
+		console.log(box.id);  // 获取值
+
+		//自定义属性
+		box.setAttribute("aaa","bbb");  // 设置
+		console.log(box.getAttribute("aaa")); // 获取值
+
+		box.removeAttribute("aaa");  // 删除
+
+	</script>
+</body>
+</html>

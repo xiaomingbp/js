@@ -1,0 +1,50 @@
+.banner{
+	width:1000px;
+	height:400px;
+	position: relative;
+	margin:0 auto;
+}
+.imgs>img{
+	width:1000px;
+	height:400px;
+	display: none;
+}
+.imgs>img.active{
+	display: block;
+}
+.focuss{
+	width:100%;
+	position: absolute;
+	bottom:20px;
+	text-align: center;
+}
+.focuss>span{
+	display: inline-block;
+	width:10px;
+	height:10px;
+	border-radius: 50%;
+	background-color: red;
+	margin:10px;
+}
+.focuss>span.active{
+	background-color: yellow;
+}
+.btns{
+	width:100%;
+	position: absolute;
+	top:175px;
+	overflow: hidden;
+}
+.btns>span{
+	display: inline-block;
+	width:50px;
+	height:50px;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+	line-height: 50px;
+}
+
+.btns>span:last-child{
+	float:right;
+}

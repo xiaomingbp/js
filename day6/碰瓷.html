@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.malu{
+			height:100px;
+			background-color: #aaa;
+			position: relative;
+		}
+		.car{
+			width:100px;
+			height:100px;
+			background-color: red;
+			position: absolute;
+			left:0;
+			text-align: center;
+			line-height: 100px;
+		}
+		.man{
+			width:100px;
+			height:100px;
+			background-color: pink;
+			position: absolute;
+			right:0;
+			text-align: center;
+			line-height: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="malu">
+		<div class="car">车</div>
+		<div class="man">人</div>
+	</div>
+</body>
+<script>
+	var car = document.querySelector(".car");
+	var man = document.querySelector(".man");
+
+	/*
+		键盘事件只能在能输入内容的标签和document上绑定。
+
+		元素.offsetWidth   元素的宽度
+		元素.offsetHeight  元素的高度
+	 */
+
+	document.addEventListener("keydown",function(e){
+		if(e.keyCode == 39){
+			car.style.left = car.offsetLeft + 10 + "px"
+
+			if(car.offsetLeft + 100 >= man.offsetLeft){
+				alert("哎呦妈呀，撞人了！");
+			}
+		}
+		if(e.keyCode == 37){
+			man.style.left = man.offsetLeft - 10 + "px"
+			if(car.offsetLeft + 100 >= man.offsetLeft){
+				alert("你撞到我了，没有50000别想走！！！");
+			}
+		}
+	});
+</script>
+</html>

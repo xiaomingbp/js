@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="button" class="btn" value="刷新">
+	<script type="text/javascript">
+		var btn = document.querySelector(".btn");
+		btn.onclick = function(){
+			//history.go(0); // 打开的是历史记录里的当前页面
+			location.reload(true);
+			/*
+				location.reload(false);  // 打开的是历史记录里的页面
+				location.reload(true);  // 重新请求的页面
+			*/
+		}
+	</script>
+	
+
+</body>
+</html>

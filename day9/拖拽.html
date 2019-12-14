@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:200px;
+			height:200px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		var box = document.querySelector(".box");
+		var flog = false;  // 鼠标是否按下的状态
+		var offx = 0;
+		var offy = 0;
+		box.addEventListener("mousedown",function(e){
+			flog = true;
+			offx = e.offsetX;
+			offy = e.offsetY;
+		})
+
+
+		document.addEventListener("mousemove",function(e){
+			if(flog){
+				box.style.left = e.pageX - offx + "px"
+				box.style.top = e.pageY - offy + "px"
+			}			
+		});
+
+		document.addEventListener("mouseup",function(e){
+			flog = false;		
+		});
+
+	</script>
+</body>
+</html>

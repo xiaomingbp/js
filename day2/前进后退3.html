@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="button" class="prevbtn" value="后退">
+	<input type="button" class="nextbtn" value="前进">
+	页面3
+	<script type="text/javascript">
+		var prevbtn = document.querySelector(".prevbtn");
+		var nextbtn = document.querySelector(".nextbtn");
+		prevbtn.onclick = function(){
+			history.back();
+			//history.go(-1)
+		}
+		nextbtn.onclick = function(){
+			history.forward()
+			//history.go(1)
+		}
+	</script>
+	
+
+</body>
+</html>

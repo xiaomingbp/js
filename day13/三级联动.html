@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三级联动</title>
+</head>
+<body>
+	<select class="sheng">
+		<option>请选择</option>
+	</select>
+	<select class="shi">
+		<option>请选择</option>
+	</select>
+	<select class="qu">
+		<option>请选择</option>
+	</select>
+
+	<script src="city.js"></script>
+	<script>
+		
+		function Sanjiliandong(ssheng,sshi,squ,data){
+			//获取元素 把变量设置成构造函数里的this的属性
+			this.sheng = document.querySelector(ssheng)
+			this.shi = document.querySelector(sshi)
+			this.qu = document.querySelector(squ)
+			this.data = data;
+
+			this.rander(this.sheng,this.data);
+			this.bindEvent();
+		}
+		//把函数设置成构造函数的prototype的方法
+		Sanjiliandong.prototype.rander = function(el,arr){
+			el.innerHTML = "<option>请选择</option>" + arr.map(function(item){
+				return `<option>${item.name || item}</option>`
+			}).join("")
+		}
+		Sanjiliandong.prototype.bindEvent = function(){
+			var that = this;
+			this.sheng.addEventListener("change",function(){
+				
+				var shengIndex = this.selectedIndex - 1;
+				var shengDate = that.data[shengIndex].city;
+
+				that.rander(that.shi,shengDate);
+			})
+			this.shi.addEventListener("change",function(){
+				var shengIndex =  that.sheng.selectedIndex - 1
+				var shiIndex =  that.shi.selectedIndex - 1 
+				var quDate = that.data[shengIndex].city[shiIndex].area
+				that.rander(that.qu,quDate);
+			})
+		}
+		var obj = new Sanjiliandong(".sheng",".shi",".qu",data)
+
+		console.log(obj)
+
+
+		
+
+	</script>
+</body>
+</html>

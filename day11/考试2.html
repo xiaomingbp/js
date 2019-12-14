@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	
+	<div><span class="count">140</span></div>
+	<textarea class="text1" cols="30" rows="10" maxlength="140"></textarea>
+	<script>
+		var count = document.querySelector(".count");
+		var text1 = document.querySelector(".text1");
+		text1.addEventListener("input",function(){
+			var n = 140 - this.value.length;
+			if(this.value.length < 25){
+				count.style.color = "red";
+			}else{
+				count.style.color = "black";
+			}
+			count.innerHTML = n;
+		});
+	</script>
+</body>
+</html>

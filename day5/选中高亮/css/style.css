@@ -1,0 +1,17 @@
+
+ul,li{
+	list-style: none;
+}
+.ul1{
+	width:300px;
+}
+
+.ul1 li{  /* 类名为ul1下面的所有li   */
+	height:30px;
+	border:1px solid #aaa;
+	line-height: 30px;
+	margin:5px;
+}
+.ul1 li.aaa{   /* 类名为ul1下面的li并且类名为aaa */
+	background-color: red;
+}

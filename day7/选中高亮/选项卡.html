@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.btns{
+			overflow: hidden;
+		}
+		.btns>div{
+			width:100px;
+			height: 50px;
+			margin:5px;
+			float: left;
+			background-color:red;
+		}
+		.btns>div.active{
+			background-color:blue;
+		}
+		.cons>div{
+			width: 300px;
+			height:300px;
+			border:1px solid red;
+			display: none;
+		}
+		.cons>div.active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="btns">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+	<div class="cons">
+		<div>a</div>
+		<div>b</div>
+		<div>c</div>
+	</div>
+	<script>
+		// 获取元素
+		var btns = [...document.querySelectorAll(".btns div")];
+		var cons = document.querySelectorAll(".cons div");
+
+		// 绑定事件
+		btns.forEach(function(item,index){
+			item.onclick = function(){
+
+				btns.forEach(function(el,i){
+					btns[i].classList.remove("active")
+					cons[i].classList.remove("active")
+				})
+
+				btns[index].classList.add("active")
+				cons[index].classList.add("active")
+			}
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	间歇计时器（循环计时器）
+		setInterval(function(){},毫秒);
+
+	超时计时器（延迟计时器）
+		setTimeout(function(){},毫秒)
+
+	清除间歇计时器
+		clearInterval(计时器返回值)
+
+	清除超时计时器
+		clearTimeout(计时器返回值)
+		
+	<script type="text/javascript">
+		var i = 0;
+		/*
+		setInterval(function(){
+			console.log(i++);
+		},2000);
+		*/
+	
+		setTimeout(function(){
+			console.log(i++);
+		},3000)
+
+	</script>
+</body>
+</html>

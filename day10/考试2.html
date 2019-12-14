@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:200px;
+			height: 200px;
+			border:1px solid #aaa;
+			position: absolute;
+			top:0;
+			left:0;
+			background-color: red;
+			margin:50px;
+			/*
+			box的参考元素的页面 偏移量是0px
+			但是box有margin:50px;所以现在box的偏移量是50px
+			 */
+		}		
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+	<script>
+		var box = document.querySelector(".box")
+		
+		var flag = false;
+		var offx = 0;
+		var offy = 0;
+
+		title.addEventListener("mousedown",function(e){
+			flag = true;
+			offx = e.offsetX;
+			offy = e.offsetY;
+		});
+		document.addEventListener("mousemove",function(e){
+			if(flag){
+				var x = e.pageX - offx;
+				var y = e.pageY - offy;
+				
+				box.style.left = x + "px"
+				box.style.top = y + "px"
+			}
+		})
+		document.addEventListener("mouseup",function(){
+			flag = false;
+		})
+
+
+
+	</script>
+</body>
+</html>

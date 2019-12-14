@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.sheng,.shi,.qu{
+			width:300px;
+			height:30px;
+			line-height: 30px;
+			border:1px solid #aaa;
+			float: left;
+			position: relative;
+		}
+		.sheng>div{
+			height:30px;
+		}
+		.sheng>ul{
+			display: none;
+			position: absolute;
+			width:100%;
+			left:0;
+		}
+		.sheng>ul.active{
+			display: block;
+		}
+		ul,li{
+			padding: 0;
+			margin:0;
+			list-style: none;
+			border:1px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+	<div class="sheng">
+		<div>请选择</div>
+		<ul class="active">
+			<li>北京</li>
+			<li>天津</li>
+			<li>上海</li>
+			<li>内蒙古</li>
+		</ul>
+	</div>
+	<div class="shi">
+		<div>请选择</div>
+		<ul class="active">
+			<li>北京</li>
+			<li>天津</li>
+			<li>上海</li>
+			<li>内蒙古</li>
+		</ul>
+	</div>
+	<div class="qu">
+		<div>请选择</div>
+		<ul class="active">
+			<li>北京</li>
+			<li>天津</li>
+			<li>上海</li>
+			<li>内蒙古</li>
+		</ul>
+	</div>
+
+</body>
+</html>

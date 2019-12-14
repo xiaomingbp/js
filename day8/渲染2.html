@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ul1"></ul>
+	<script>
+		var arr = [
+			{"class":"1801A","num":17},
+			{"class":"1801B","num":20},
+			{"class":"1801C","num":30},
+			{"class":"1801D","num":40}
+		]
+
+		var ul1 = document.querySelector(".ul1")
+
+		arr.forEach(function(item){
+			var li = document.createElement("li");
+			li.innerHTML = item["class"] + "," + item.num;
+			ul1.appendChild(li)
+		})
+
+
+	</script>
+</body>
+</html>

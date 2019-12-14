@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.dialog{
+			width:300px;
+			height:200px;
+			background-color: #fff;
+			box-shadow: 0 0 15px #888;
+			position: absolute;
+			top:50%;
+			left:50%;
+			margin-left:-150px;
+			margin-top:-100px;
+			display: none;
+		}
+		.dialog.active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="添加" class="add">
+
+	<div class="dialog">
+		<input type="text" class="text1">
+		<input type="button" value="确认" class="btn">
+	</div>
+	
+	<ul class="ul1"></ul>
+
+	<script>
+		//获取元
+		var add = document.querySelector(".add");
+		var dialog = document.querySelector(".dialog");
+		var text1 = document.querySelector(".text1");
+		var btn = document.querySelector(".btn");
+		var ul1 = document.querySelector(".ul1");
+
+		//绑定事件
+		add.addEventListener("click",function(){
+			dialog.classList.add("active");
+		});
+
+		btn.addEventListener("click",function(){
+			
+			dialog.classList.remove("active");
+			var li = document.createElement("li");
+			li.innerHTML = text1.value;
+
+			var button = document.createElement("input")
+			button.type = "button"
+			button.value = "删除"
+			button.addEventListener("click",function(){
+				this.parentNode.remove();
+			})
+
+			li.appendChild(button);
+
+
+
+			ul1.appendChild(li)
+			text1.value = "";
+		})
+
+	</script>
+</body>
+</html>

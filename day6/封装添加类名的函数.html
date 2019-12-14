@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box" class="aaa"></div>
+	<script>
+		/*
+			IE8以及以下的不支持的获取元素的方法
+				document.querySelector()
+				document.querySelectorAll()
+				document.getElementsByClassName()
+
+		 */
+		
+		var box = document.getElementById("box");
+		//box.classList.add()
+		function addClass(el,className){
+			if(el.className == ""){
+				el.className = className;
+			}else{
+				el.className += " " + className;
+			}		
+		}
+		addClass(box,"abc")
+	</script>
+</body>
+</html>

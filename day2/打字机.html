@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="button" class="btn" value="开始打字">
+	<div class="content"></div>
+	<script type="text/javascript">
+		var btn = document.querySelector(".btn");
+		var content = document.querySelector(".content");
+		var str = "你在桥上看风景，看风景的人在桥下看你，明月装饰了你的窗，你装饰了别人的梦。"
+		btn.onclick = function(){
+			var i = 0;
+			btn.disabled = true;
+			var t = setInterval(function(){
+				if(i < str.length){
+					content.innerHTML += str.charAt(i);
+					i++;
+				}else{
+					clearInterval(t);
+					btn.disabled = false;
+				}
+			},800)
+		}
+	</script>
+</body>
+</html>

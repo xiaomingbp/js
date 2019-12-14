@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		/*
+			函数声明（有）声明提升(将函数提升到当前作用域的顶端)
+				函数声明提升是整体提升
+
+			函数表达式（没有）声明提升
+
+
+		 */
+		show();
+		function show(){
+			console.log(123)
+		}
+		show();
+
+		var hide = function(){
+			console.log(456)
+		}	
+		hide()
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.checkedbox{
+			border:1px solid #aaa;
+			padding: 5px;
+			min-height:30px;
+		}
+		.checkedbox>span{
+			border:1px solid #aaa;
+			display: inline-block;
+			width:60px;
+			height:30px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.box{
+			border:1px solid #aaa;
+			padding: 5px;
+			min-height:30px;
+			margin-top:10px;
+			overflow: hidden;
+		}
+		.box>span{
+			border:1px solid #aaa;
+			display: inline-block;
+			width:60px;
+			height:30px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.box>span.active{
+			background-color: #aaa;
+		}
+	</style>
+</head>
+<body>
+	<div class="checkedbox"></div>
+	<div class="box">
+		<span>你好</span>
+		<span>我好</span>
+		<span>他好</span>
+		<span>她好</span>
+		<span>它好</span>
+		<span>都好</span>
+	</div>
+	<script type="text/javascript">
+		var checkedbox = document.querySelector(".checkedbox"); // 获取checkedbox
+		var spans = document.querySelectorAll(".box>span"); // 获取box里所有的span
+		for(var i=0;i<spans.length;i++){ // 遍历box里的span
+			spans[i].onclick = function(){ // 给每一个span绑定点击事件
+				if(this.classList.contains("active")){ // 判断点击的这个span是否有active类名
+					this.classList.remove("active") //  删除类名
+
+					var spans2 = document.querySelectorAll(".checkedbox>span") // 获取checkedbox里所有的span
+					for(var j=0;j<spans2.length;j++){ // 遍历checkedbox里的span
+						if(spans2[j].innerHTML == this.innerHTML){ // 判断spans2[j]的内容和点击的这个span的内容是否一样
+							checkedbox.removeChild(spans2[j]); // 删除spans2[j]
+						}
+					}
+
+				}else{
+					this.classList.add("active") // 添加类名
+					var span = document.createElement("span") // 创建span
+					span.innerHTML = this.innerHTML; // 将点击的span的内容复制给新创建的span
+					checkedbox.appendChild(span) // 将新创建的span添加到checkedbox
+				}
+			}
+		}
+	</script>
+</body>
+</html>

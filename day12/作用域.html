@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			作用域：变量和函数的有效范围。
+			作用域分：全局作用域和局部作用域。
+				全局作用域里的变量和函数,在全局范围内有效
+				局部作用域里的变量和函数，在局部作用域内有效
+
+			作用域链：访问变量时的查找顺序
+				先查找最近的作用域，没有时在看外面的作用域,以此类推。
+				一直找到为止,否则报错。
+				查找顺序是从内到外（单向查找）
+		 */
+		/*
+		//var a = "aaaa";
+		function show(){
+			//var a = "bbbb"
+			console.log(a);
+		}
+		show();
+		*/
+
+		
+		function show(){
+			var a = "bbbb"			
+		}
+		show();
+		console.log(a);
+
+	</script>
+</body>
+</html>

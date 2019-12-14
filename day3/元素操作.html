@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>	
+	<div class="box">
+		<span>aaaa</span>
+	</div>
+	<script type="text/javascript">
+		
+		var box = document.querySelector(".box");
+		var div1 = document.createElement("div"); // 创建
+		//box.appendChild(div1)// 添加（从后面添加）
+		box.insertBefore(div1,box.children[0]); // 添加在=>   box里，box.children[0]前
+		//box.removeChild(div1)// 删除
+
+	</script>
+</body>
+</html>

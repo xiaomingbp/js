@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	面向对象：
+		一种开发思想。
+		可以避免全局污染（命名冲突的问题）。
+
+
+
+	三大特征的优点：
+
+		封装：封装的优势在于定义只可以在类内部进行对属性的操作，外部无法对这些属性指手画脚，要想修改，也只能通过你定义的封装方法。
+
+		继承：继承减少了代码的冗余，省略了很多重复代码，开发者可以从父类底层定义所有子类必须有的属性和方法，以达到耦合的目的。
+
+		多态：多态实现了方法的个性化，不同的子类根据具体状况可以实现不同的方法，光有父类定义的方法不够灵活，遇见特殊状况就捉襟见肘了。
+
+
+	面向对象就是用对象的方式开发程序。
+
+
+		var obj = {
+			name:"小白",   // 变量转属性
+			getName:function(){   //  函数转方法
+
+			}
+		}
+	
+		/*******************************/
+
+		//对象
+		var student = {
+			name:"小黑",
+			age:18,
+			sex:"男",
+			readbook:function(){
+
+			}
+		}
+
+
+		工厂模式：批量创建对象
+		function createStudent(sname,sage,ssex){
+			var obj = {
+				name:sname,
+				age:sage,
+				sex:ssex,
+				readbook:function(){
+
+				}
+			}
+			return obj
+		}
+		var stu1 = createStudent("小花",18,"女")
+
+		缺点：工厂模式创建出来的对象类型无法区分。
+
+
+		构造函数:(可定是函数：1、得声明，2、得调用)
+
+			构造函数：用new操作符调用的函数（用来创建对象的）
+
+			
+			new的工作：
+
+				在函数里创建一个空对象然后赋值给this
+				将对象的类型改成函数的名字（老师自己说的）
+				检查函数的返回值，如果函数的返回值是基本类型数据时返回this，否则直接返回
+
+
+		用构造函数创建对象：
+
+			将所有的属性都设置在this上。
+			将所有的方法都设置在函数的prototype属性上。
+
+
+			例如：创建一个学生对象
+
+				function student(sname,sage,ssex){
+					//设置属性
+					this.name = sname;
+					this.age = sage;
+					this.ssex = ssex;
+				}
+
+				student.prototype.getName = function(){
+					console.log(this.name);
+				}
+
+				var s1 = new student("小黄",18,"男")
+				构造函数创建的对象(s1) 叫实例化对象
+
+
+
+
+
+</body>
+</html>

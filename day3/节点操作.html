@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		ul,li{
+			padding:0;
+			margin:0;
+			list-style: none;
+		}
+		.list li{
+			border-bottom: 1px solid #ccc;
+			height: 40px;
+			line-height: 40px;
+			width:300px;
+		}
+		/*.list li:hover{
+			background-color: #f0f0f0;
+		}*/
+		.list input[type=text]{
+			width: 30px;
+			text-align: center;	
+		}
+	</style>
+</head>
+<body>
+	<ul class="list">
+		<li>
+			<input type="button" value="-">
+			<input type="text" value="1">
+			<input class="jia" type="button" value="+">
+		</li>
+		<li>
+			<input type="button" value="-">
+			<input type="text" value="1">
+			<input class="jia"  type="button" value="+">
+		</li>
+		<li>
+			<input type="button" value="-">
+			<input type="text" value="1">
+			<input class="jia"  type="button" value="+">
+		</li>
+	</ul>
+	<script type="text/javascript">
+		//获取li
+		//var lis = document.querySelectorAll(".list li");
+		var ul = document.querySelector(".list")
+		for(var i=0;i<ul.children.length;i++){
+			ul.children[i].onmouseover = function(){
+				this.style.backgroundColor = "#f0f0f0";
+			}
+			ul.children[i].onmouseout = function(){
+				this.style.backgroundColor = "#fff"
+			}
+		}
+
+		var jias = document.querySelectorAll(".jia")
+		for(var i=0;i<jias.length;i++){
+			jias[i].onclick = function(){
+				this.previousElementSibling.value++;
+			}
+		}
+
+	</script>
+</body>
+</html>

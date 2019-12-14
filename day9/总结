@@ -1,0 +1,47 @@
+总结：
+	事件流：
+		document开始到document结束。
+		捕获，目标，冒泡
+		事件捕获：从外到内的传播顺序（从不具体到具体的传播顺序）
+		事件冒泡：从内到外的传播顺序（从具体到不具体的传播顺序）
+
+	事件绑定：
+		DOM0级事件
+			绑定: 元素.on + 事件类型 = 事件处理函数
+			删除: 元素.on + 事件类型 = null
+
+		DOM2级事件
+			绑定: 元素.addEventListener(事件类型,事件处理函数,boolean) 
+			删除: 元素.removeEventListener(事件类型,事件处理函数,boolean) 
+			注意：事件处理函数是匿名函数时无法删除，参数不一致时无法删除
+
+		IE事件
+			绑定: 元素.attachEvent(事件类型,事件处理函数) 
+			删除: 元素.detachEvent(事件类型,事件处理函数) 
+			注意：事件处理函数是匿名函数时无法删除，参数不一致时无法删除
+
+	事件类型
+		鼠标事件
+		键盘事件
+		焦点事件
+		文本事件
+		UI事件
+
+	事件对象
+		offsetX 鼠标相对于元素的水平坐标
+		offsetY 鼠标相对于元素的垂直坐标
+		pageX   鼠标相对于页面的水平坐标
+		pageY   鼠标相对于页面的垂直坐标
+		clientX 鼠标相对于可视口的水平坐标
+		clientY  鼠标相对于可视口的垂直坐标
+
+
+		keyCode 键盘码
+		target 事件源
+		srcElement 事件源（IE）		
+		returnValue = false;  阻止默认事件(IE)
+		cancelBubble = true;  阻止冒泡(IE)
+
+		stopPropagation()   阻止冒泡
+		preventDefault()   阻止默认事件
+		

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	
+	<input type="button" id="btn" value="点击">
+	<script>
+		var btn = document.getElementById("btn")
+		
+		// btn.addEventListener("click",function(){
+		// 	alert(123);
+		// });
+
+		btn.attachEvent("onclick",function(){
+			alert(123);
+		})
+
+		/*
+			IE事件绑定:
+				元素.attachEvent("on" + 事件类型,事件处理函数);
+
+			事件流：只支持冒泡
+
+			IE事件删除：
+				元素.detachEvent("on" + 事件类型,事件处理函数);
+				注意:跟事件绑定函数的参数保持一致时可以删除。
+
+		*/
+
+		
+		
+	</script>
+</body>
+</html>

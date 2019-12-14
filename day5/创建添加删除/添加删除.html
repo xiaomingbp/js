@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		ul{
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="text1"><input type="button" value="添加" class="add">
+	<ul class="ul1"></ul>
+	<script>
+		/*
+			1、在输入框里写内容
+			2、点击添加按钮
+				1)创建一个li元素
+				2)将输入框里的内容写到li元素里
+				3)将创建好的li元素添加到ul里
+				4)在创建一个按钮（内容是删除）
+					（1）点击删除按钮是删除按钮的父元素
+				5)将按钮添加到li元素里
+		 */		
+		var add = document.querySelector(".add");
+		var text1 = document.querySelector(".text1");
+		var ul1 = document.querySelector(".ul1");
+		add.onclick = function(){
+			var li = document.createElement("li")
+			li.innerHTML = text1.value;
+			ul1.appendChild(li);
+
+			var btn = document.createElement("input")
+			btn.type = "button"
+			btn.value = "删除"
+			btn.onclick = function(){
+				this.parentNode.remove();
+			}
+
+			li.appendChild(btn);
+		}
+
+	</script>
+</body>
+</html>

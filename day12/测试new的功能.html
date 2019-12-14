@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		function Person(){
+			this.name = "xiaoming"
+			return {name:"xiaobai"};
+		}
+
+		/*
+		Person() // 普通函数
+		new Person() // 构造函数
+		*/
+	
+		var r1 = Person();
+		console.log(r1)
+
+		var r2 = new Person();
+		console.log(r2)
+
+
+		/*
+			
+			function Person(){
+				this = {};
+				this.prototype.constructor = Person;
+			
+				函数里return的结果是result
+
+				if(typeof result === "object"){
+					return result;
+				}else{
+					return this;
+				}
+			}
+
+		 */
+
+	</script>
+</body>
+</html>

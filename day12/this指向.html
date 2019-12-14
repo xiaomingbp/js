@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">点击</div>
+</body>
+
+<script>
+	
+	/*
+		this指向：		
+		函数外的this === window
+
+		tihs在js里看做是《我》或《自己》 ==> 第一人称
+		.在js里看做是《的》
+
+		函数里的this永远指向调用这个函数的对象
+
+	 */
+
+
+	 // var obj = {
+	 // 	name:"xiaoming",
+	 // 	getName:function(){
+
+	 // 	}
+	 // }
+
+	 // console.log(obj.name)  // "xiaoming"
+	 // obj.getNama()
+	 
+
+
+	 function show(){
+	 	console.log(this)
+	 }
+	 show()
+
+
+	 var obj = {
+	 	show:function(){
+	 		console.log(this)
+	 	}
+	 }
+	 obj.show();
+
+
+	 var show1 = obj.show;
+	 show1()
+
+
+
+	 var objsun = {
+	 	sun:{
+	 		show:function(){
+	 			console.log(this)  // objsun.sun
+	 		}
+	 	}
+	 }
+	 objsun.sun.show();
+
+
+	 var objab = objsun.sun;
+	 objab.show();
+
+	 var objcd = objsun.sun.show;
+	 objcd(); 
+
+	 /*************************************/
+
+	 //匿名函数里的this
+	 
+	 (function(){
+	 	console.log(this)
+	 })()
+
+
+	 //事件函数里的this
+	 
+	 // 元素.addEventListener("click",function(){
+	 // 	console.log(this)  // 元素
+	 // });
+
+
+	 var arr = [1,2,3]
+	 arr.forEach(function(){
+	 	console.log(this);   // window
+	 });
+
+
+	 setInterval(function(){
+	 	console.log(this)  // window
+	 },0)
+	 
+
+
+
+	 var objdiv = {
+	 	tag:document.querySelector(".box"),
+	 	tag1:document.querySelector(".box1"),
+	 	bindEvent:function(){
+	 		var that = this;   // 这个this是bindEvent函数里的this  指向objdiv
+
+	 		this.tag.addEventListener("click",function(){
+	 			
+	 			console.log(this) // 这个this是事件处理函数里的this  指向 this.tag(元素)
+
+	 			that.tag1.style.backgroundColor = "red"
+	 			that.tag.style.backgroundColor = "red"
+	 		})
+	 	}
+	 }
+
+
+
+
+</script>
+</html>

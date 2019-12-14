@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<div class="div3"></div>
+
+	<!-- <div>
+		<span>aaaa</span>
+		<input type="button">
+	</div> -->
+
+
+
+
+
+
+	<script>
+		var zhuan1 = document.createElement("span");
+
+		var div1 = document.querySelector(".div1");
+		var div2 = document.querySelector(".div2");
+
+		div1.appendChild(zhuan1);
+		div2.appendChild(zhuan1);
+
+
+		var div4 = document.createElement("div");
+
+		var span1 = document.createElement("span");
+		div4.appendChild(span1)
+
+		var input1 = document.createElement("input");
+		input1.type="button"
+		div4.appendChild(input1)
+
+		document.body.appendChild(div4);
+
+
+
+
+
+	</script>
+</body>
+</html>

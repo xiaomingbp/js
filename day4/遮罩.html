@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		html,body{
+			padding:0;
+			margin: 0;
+			height:100%;
+		}
+		.zhezhao{
+			width:100%;
+			height:100%;
+			background-color: rgba(0,0,0,0.5);
+
+			position: fixed;
+			top:0;
+			left:0;
+
+			display: none;
+		}
+		.zhezhao.active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="创建遮罩层" class="btn">
+	<div class="zhezhao">
+		<input type="button" value="关闭" class="close">
+	</div>
+
+	
+	<script type="text/javascript">
+		var btn = document.querySelector(".btn");
+		var zhezhao = document.querySelector(".zhezhao");
+		var close = document.querySelector(".close")
+		btn.onclick = function(){
+			zhezhao.classList.add("active")
+		}
+		close.onclick = function(){
+			zhezhao.classList.remove("active")
+		}
+	</script>
+</body>
+</html>

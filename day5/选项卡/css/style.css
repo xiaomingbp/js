@@ -1,0 +1,29 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.tab{
+	/*border:1px solid #aaa;*/
+	width:350px;
+}
+.tit{
+	border:1px solid #aaa;
+}
+.tit>span{
+	display: inline-block;
+	width:100px;
+	height:35px;
+	line-height: 35px;
+	text-align: center;
+}
+.tit>span.active{
+	background-color: red;
+}
+.con>div{
+	height: 300px;
+	border:1px solid #aaa;
+	display: none;
+}
+.con>div.active{
+	display: block;
+}

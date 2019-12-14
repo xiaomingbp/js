@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>我的第一个页面</title>
+	</head>
+	<body>
+		<a href=""></a>
+		<div class="box">你好</div>
+		<div>
+			<span>aaa</span>
+		</div>
+	</body>
+	nodeName
+	<script type="text/javascript">
+		var box = document.querySelector(".box");
+
+		console.log(box.nodeName)
+		console.log(box.nodeType)
+		console.log(box.nodeValue)
+
+		console.log(box.attributes[0].nodeName)
+		console.log(box.attributes[0].nodeType)
+		console.log(box.attributes[0].nodeValue)
+
+		console.log(box.childNodes[0].nodeName)
+		console.log(box.childNodes[0].nodeType)
+		console.log(box.childNodes[0].nodeValue)
+	</script>
+</html>

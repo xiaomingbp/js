@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table border="1" cellspacing="0" width="500">
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody class="list">
+			<!-- <tr>
+				<td>小明</td>
+				<td>40</td>
+				<td>男</td>
+				<td><input type="button" value="删除"></td>
+			</tr> -->
+		</tbody>
+	</table>
+	<script>
+		var data = [
+			{"name":"张三","age":"12","sex":"男"},
+			{"name":"李四","age":"14","sex":"女"},
+			{"name":"王五","age":"15","sex":"男"},
+			{"name":"赵六","age":"11","sex":"女"}
+		]
+
+		var tbody = document.querySelector(".list");
+		data.forEach(function(item){
+
+			var tr = document.createElement("tr");
+
+			var td_name = document.createElement("td");
+			td_name.innerHTML = item.name
+			var td_age = document.createElement("td");
+			td_age.innerHTML = item.age
+			var td_sex = document.createElement("td");
+			td_sex.innerHTML = item.sex
+			var td_del = document.createElement("td");
+
+			var btn = document.createElement("input");
+			btn.type = "button"
+			btn.value = "删除"
+			btn.addEventListener("click",function(){
+				this.parentNode.parentNode.remove();
+			})
+
+			td_del.appendChild(btn)
+
+			tr.appendChild(td_name);
+			tr.appendChild(td_age);
+			tr.appendChild(td_sex);
+			tr.appendChild(td_del);
+
+			tbody.appendChild(tr)
+
+		})
+
+	</script>
+</body>
+</html>

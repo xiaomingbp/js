@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="banner">
+		<div class="imgs">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+		</div>
+		<div class="focuss">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<div class="btns">
+			<span><</span>
+			<span>></span>
+		</div>
+	</div>
+</body>
+<!-- <script src="js/script.js"></script> -->
+<script>
+	var banner = document.querySelector(".banner")
+
+	//图片和焦点
+	var imgs = document.querySelectorAll(".imgs img");
+	var focuss = document.querySelectorAll(".focuss span");
+
+	//计时器
+	var t;
+
+	//通过下标控制显示的图片和焦点
+	var xiabiao = 2;
+
+	function show(){
+		focuss.forEach(function(el,i){
+			imgs[i].classList.remove("active")
+			focuss[i].classList.remove("active")
+		})	
+		imgs[xiabiao].classList.add("active")
+		focuss[xiabiao].classList.add("active")
+	}
+	show();
+
+	//左右按钮
+	var btns = document.querySelectorAll(".btns span");
+
+	btns[0].addEventListener("click",function(){
+		xiabiao--;
+		if(xiabiao<0){
+			xiabiao = imgs.length - 1;
+		}
+		show();
+	})
+	btns[1].addEventListener("click",function(){
+		xiabiao++;
+		if(xiabiao == imgs.length){
+			xiabiao = 0;
+		}
+		show();
+	})
+
+	//焦点
+	focuss.forEach(function(item,i){ // 元素,下标,数组
+		item.addEventListener("click",function(){
+			xiabiao = i;
+			show();
+		})
+	})
+
+	//轮播
+	function run(){
+		t = setInterval(function(){
+			xiabiao++;
+			if(xiabiao > 2){
+				xiabiao = 0;
+			}
+			show();
+		},500)
+	}
+	run();
+
+	//停止轮播
+	banner.addEventListener("mouseover",function(){
+		clearInterval(t);
+	})
+
+ 	//重新启动轮播
+	banner.addEventListener("mouseout",function(){
+		run();
+	})
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			height:30px;
+			line-height: 30px;
+		}
+		li.active{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>aaaa</li>
+		<li>bbbb</li>
+		<li>cccc</li>
+	</ul>
+	<script>
+		// 1	
+		function addEvent(el,type,fn){
+			if(el.addEventListener){
+				el.addEventListener(type,fn);
+			}else if(el.attachEvent){
+				el.attachEvent("on"+type,fn)
+			}else{
+				el["on"+type] = fn;
+			}
+		}
+
+		// 2
+		var ul = document.querySelector("ul")
+		addEvent(ul,"click",function(e){
+			if(e.target.nodeName === "LI"){
+				e.target.classList.add("active")
+			}
+		})
+	</script>
+</body>
+</html>

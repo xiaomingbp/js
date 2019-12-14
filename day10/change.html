@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="text1">
+
+	<input type="checkbox" class="ckbox">
+	
+	<input type="radio" name="a" class="rd">
+	<input type="radio" name="a" class="rd1">
+	
+
+	<select class="sel">
+		<option value="">aaa</option>
+		<option value="">bbb</option>
+		<option value="">ccc</option>
+	</select>
+	<script>
+		var text1 = document.querySelector(".text1");
+		text1.onchange = function(){
+			console.log("a")
+		}
+
+		var ckbox = document.querySelector(".ckbox");
+		ckbox.onchange = function(){
+			console.log("e")
+		}
+
+		var rd = document.querySelector(".rd");
+		rd.onchange = function(){
+			console.log("i")
+		}
+
+		var rd1 = document.querySelector(".rd1");
+		rd1.onchange = function(){
+			console.log("o")
+		}
+
+		var sel = document.querySelector(".sel");
+		sel.onchange = function(){
+			console.log("u")
+		}
+	</script>
+</body>
+</html>

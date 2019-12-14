@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.item{
+			width:100px;
+			height:100px;
+			background-color: red;
+			position: absolute;
+		}
+		.box{
+			width:300px;
+			height:300px;
+			border:1px solid blue;
+			margin:300px 400px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="item">
+		盒子
+	</div>
+	<div class="box">
+		垃圾箱
+	</div>
+	<script>
+		
+		var box = document.querySelector(".box");
+		var item = document.querySelector(".item");
+
+		var flog = false;  // 鼠标是否按下的状态
+		var offx = 0;
+		var offy = 0;
+		item.addEventListener("mousedown",function(e){
+			flog = true;
+			offx = e.offsetX;
+			offy = e.offsetY;
+		})
+
+
+		document.addEventListener("mousemove",function(e){
+			if(flog){
+				item.style.left = e.pageX - offx + "px"
+				item.style.top = e.pageY - offy + "px"
+			}		
+		});
+
+		document.addEventListener("mouseup",function(e){
+			
+			if(flog && e.pageX >  box.offsetLeft && e.pageX < box.offsetLeft + box.offsetWidth && e.pageY > box.offsetTop && e.pageY < box.offsetTop + box.offsetHeight){
+				item.remove();
+			}
+
+			flog = false;
+		});
+
+
+	</script>
+</body>
+</html>

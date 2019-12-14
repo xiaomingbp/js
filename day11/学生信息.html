@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table class="box"></table>
+	<script src="student.js"></script>
+	<script>
+		var box = document.querySelector(".box");
+		box.innerHTML = data.map(function(item){
+			return `<tr>
+				<td>${item.name}</td>
+				<td>${item.age}</td>
+				<td>${item.sex}</td>
+				<td><input type="button" value="删除"></td>
+			</tr>`
+		}).join("")
+
+		box.addEventListener("click",function(e){
+			if(e.target.tagName === "INPUT"){
+				e.target.parentNode.parentNode.remove();
+			}
+		});
+		
+	</script>
+</body>
+</html>

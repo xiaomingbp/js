@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ul1"></ul>
+	<script>
+		//渲染 => 用js排版 => 动态添加元素		
+
+		var arr = ["韩舒","王栋","要威","胡振阳","张晨"];
+
+		var ul1 = document.querySelector(".ul1")
+		arr.forEach(function(item){
+			var li = document.createElement("li")
+			li.innerHTML = item;
+			ul1.appendChild(li);
+		})
+
+
+	</script>
+</body>
+</html>

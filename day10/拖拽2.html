@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:1000px;
+			height:600px;
+			margin:200px;			
+			background-color: blue;
+			overflow: hidden;
+
+			position: relative;
+		}
+		.div1{
+			margin:200px;
+		}
+		.div2{
+			width:200px;
+			height: 200px;
+			position: absolute;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="div1">			
+			<div class="div2"></div> <!-- 要移动的盒子 -->
+		</div>		
+	</div>
+	<script>
+	/*
+		获取鼠标到移动盒子的偏移量
+		获取鼠标到参考盒子的偏移量
+	*/
+
+		var box = document.querySelector(".box")
+		var div2 = document.querySelector(".div2")
+		var flag = false;
+
+		var offx = 0;
+		var offy = 0;
+		var offleft = 0;
+		var offtop = 0;
+
+		div2.addEventListener("mousedown",function(e){
+			flag = true;
+
+			//鼠标的初始位置
+			offx = e.pageX;
+			offy = e.pageY;
+
+			//盒子的初始位置
+			offleft = div2.offsetLeft;
+			offtop =  div2.offsetTop;
+		});
+
+		document.addEventListener("mousemove",function(e){
+			if(flag){
+				var x = e.pageX - offx;
+				var y = e.pageY - offy;
+
+				div2.style.left = offleft + x + "px";
+				div2.style.top = offtop + y + "px";
+			}
+		});
+
+		document.addEventListener("mouseup",function(){
+			flag = false;
+		});
+
+	</script>
+</body>
+</html>

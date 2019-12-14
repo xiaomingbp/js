@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:100px;
+			height:100px;
+			background-color: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		/*
+			标签想要移动或重叠时必须设置定位。
+		 */
+		var box = document.querySelector(".box")
+
+		// box.offsetLeft  元素左边到参考元素左边的距离
+		// box.offsetTop  元素上边到参考元素上边的距离
+		
+		document.addEventListener("keydown",function(e){
+			if(e.keyCode == 37){
+				box.style.left = box.offsetLeft - 10 + "px"
+			}
+			if(e.keyCode == 39){
+				box.style.left = box.offsetLeft + 10 + "px"
+			}
+			if(e.keyCode == 38){
+				box.style.top = box.offsetTop - 10 + "px"
+			}
+			if(e.keyCode == 40){
+				box.style.top = box.offsetTop + 10 + "px"
+			}
+		});
+	</script>
+</body>
+</html>

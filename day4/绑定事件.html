@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		li.active{
+			background-color: #aaa;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<ul class="list">
+		<li>你好</li>
+		<li>他好</li>		
+		<li>她好</li>
+		<li>它好</li>
+		<li>塔好</li>
+		<li>踏好</li>
+		<li>都好</li>
+	</ul>
+	<script type="text/javascript">
+		var box = document.querySelector(".box")
+		var lis = document.querySelectorAll(".list li");
+		// lis[0].onclick = function(){}
+		// lis[1].onclick = function(){}
+		for(var i=0;i<lis.length;i++){
+			lis[i].onclick = function(){
+				//this.style.backgroundColor = "#aaa"
+				this.classList.add("active") // lis[i].classList.add("active")
+
+				var span = document.createElement("span")
+				span.innerHTML = this.innerHTML;
+				box.appendChild(span)
+			}
+		}
+	</script>
+</body>
+</html>

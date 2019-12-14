@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #000;
+		}
+		.div1{
+			width:50px;
+			height:50px;
+			border:1px solid green;
+			border-radius: 50%;
+			position: absolute;
+		}
+		.div2{
+			width:200px;
+			height:200px;
+			border:1px solid red;
+			margin:300px 0 0 400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	<script>
+		
+		var div1 = document.querySelector(".div1");
+		var div2 = document.querySelector(".div2");
+
+		var pos = div2.getBoundingClientRect();
+		
+		var flag = false;
+		var offx = 0;
+		var offy = 0;
+		div1.addEventListener("mousedown",function(e){
+			flag = true;
+			offx = e.offsetX;
+			offy = e.offsetY;
+		})
+		document.addEventListener("mousemove",function(e){
+			if(flag){
+				var x = e.pageX - offx;
+				var y = e.pageY - offy;
+
+				if(x < pos.right && x + div1.offsetWidth > pos.left && y < pos.bottom && y + div1.offsetHeight > pos.top){
+					console.log("in")
+				}
+
+				div1.style.left = x + "px"
+				div1.style.top = y + "px"
+			}			
+		})
+		document.addEventListener("mouseup",function(e){
+			flag = false;			
+		})
+
+
+	</script>
+</body>
+</html>

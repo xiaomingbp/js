@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		console.log(a);  // 提升的只有声明的部分，没有赋值的部分  
+		// console.log(b);  // 隐式声明没有声明提升，所有找不见，最后报错
+
+		var a = 10;   // 只有用var声明的变量才有声明提升（将声明的部分放到作用域的最顶端）
+		b = 10;
+
+	</script>
+</body>
+</html>

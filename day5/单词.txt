@@ -1,0 +1,5 @@
+创建元素 document.createElement("标签名")
+创建文本 document.createTextNode("文本")
+添加     元素.appendChild(新元素)    将（新元素）添加到（元素）里
+添加     元素.insertBefore(新元素,指定子元素)   将（新元素）添加的（元素）里的（指定子元素）前
+删除     元素.removeChild(子元素)    将（子元素）从（元素）里删除

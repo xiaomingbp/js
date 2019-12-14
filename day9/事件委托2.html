@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			padding: 100px;
+		}
+		.div1{
+			background-color: red;
+		}
+		.div2{
+			background-color: green;
+		}
+		.div3{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	
+	<ul class="ul1"></ul>
+
+	<script>		
+		var arr = ["a","b","c","d"]
+		var ul1 = document.querySelector(".ul1")
+		// arr.forEach(function(item){
+		// 	var li = document.createElement("li")
+		// 	li.innerHTML = `${item} <input type="button" value="删除">`
+		// 	ul1.appendChild(li)
+		// })
+		// 
+		
+		arr.forEach(function(item){
+			ul1.innerHTML += `<li>${item} <input type="button" value="删除"></li>`
+		})
+		
+		ul1.onclick = function(e){
+			if(e.target.nodeName == "INPUT"){
+				e.target.parentNode.remove();
+			}
+		}
+
+
+		/*
+			使用场景：
+				1、多个元素有相同类型的事件
+				2、动态渲染的元素
+
+		 */
+
+
+	</script>
+</body>
+</html>

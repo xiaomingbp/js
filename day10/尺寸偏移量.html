@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:300px;
+			height:300px;
+			border:20px solid pink;
+			padding:20px;
+			/*overflow: scroll;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		/*
+			尺寸：
+
+				元素.offsetWidth     包含滚动条和边框     width + padding + border
+				元素.offsetHeight
+
+				元素.clientWidth     不包含边框和滚动条   (width-滚动条) + padding
+				元素.clientHeight
+
+				window.innerWidth   不包含边框   包含滚动条
+				window.innerHeight
+		 */
+		
+		var box = document.querySelector(".box")
+		console.log(box.offsetWidth);
+		console.log(box.clientWidth);
+		console.log(window.innerWidth)
+
+		/*
+			元素.offsetLeft    参考点是最近的定位祖先（父级），或body或html
+			元素.offsetTop
+
+			元素.scrollTop    滚动条的偏移量
+			元素.scrollLeft	
+
+
+		获取尺寸偏移量
+
+			元素.getBoundingClientRect()   get Bounding Client Rect
+
+				{
+					x:1,
+					y:1,
+					left:1,
+					top:1,
+					right:1,
+					bottom:1,
+					width:1,
+					height:1
+				{
+
+
+		 */
+
+		console.log(box.getBoundingClientRect())
+
+	</script>
+</body>
+</html>

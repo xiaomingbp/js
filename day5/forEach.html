@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = ["a","b","c","d","f"];
+		//遍历
+		for(var i=0;i<arr.length;i++){
+			console.log(arr[i],i,arr)
+		}
+
+		console.log("****************************")
+
+		
+		arr.forEach(function(item,index,self){ //元素,下标,数组
+			console.log(item,index,self)
+		})
+
+		/*
+			
+		 语法：
+			数组.forEach(function(每一个元素,下标,数组){
+
+			})
+		*/
+
+	</script>
+</body>
+</html>

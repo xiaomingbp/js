@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			border:1px solid red;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box" style="left:0;">a</div>
+	<div class="box" style="left:104px;">b</div>
+	<div class="box" style="left:208px;">c</div>
+	<div class="box" style="left:312px;">d</div>
+</body>
+<script>
+	var offx = 0;
+	var offy = 0;
+	var el = null;
+	document.addEventListener("mousedown",function(e){
+		if(e.target.classList.contains("box")){
+			el = e.target;
+		}		
+		offx = e.offsetX;
+		offy = e.offsetY;
+	})
+	document.addEventListener("mousemove",function(e){
+		if(el){
+			el.style.left = e.pageX - offx + "px"
+			el.style.top = e.pageY - offy + "px"
+		}		
+	})
+	document.addEventListener("mouseup",function(){
+		el = null;
+	})
+</script>
+</html>

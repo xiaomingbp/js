@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+		.box>img{
+			width:50px;
+			height:50px;
+		}
+		.box>img.active{
+			border:1px solid red;
+		}
+		.div1>img{
+			width:200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="images/1.jpg" alt="">
+		<img src="images/2.jpg" alt="">
+		<img src="images/3.jpg" alt="">
+	</div>
+	<input type="button" value="添加" class="add">
+	<div class="div1"></div>
+	<script>
+		var imgs = [...document.querySelectorAll(".box img")];
+		var add = document.querySelector(".add");
+		var div1 = document.querySelector(".div1");
+
+		imgs.forEach(function(item){
+			item.addEventListener("click",function(){
+				imgs.forEach(function(el){
+					el.classList.remove("active")
+				})
+				item.classList.add("active")
+			});
+		})
+
+		add.addEventListener("click",function(){
+			var img = document.createElement("img");
+			img.src = document.querySelector(".box img.active").src;
+
+			div1.appendChild(img);
+		})
+
+	</script>
+</body>
+</html>

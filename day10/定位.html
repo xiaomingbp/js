@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			margin:100px;
+			position: relative;
+		}
+		.div1{
+			width:100px;
+			height: 100px;
+			position: absolute;
+			border:1px solid red;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="div1"></div>		
+	</div>
+	<script>
+		var box = document.querySelector(".box")
+		var div1 = document.querySelector(".div1")
+		var flog = false;
+		var offx = 0;
+		var offy = 0;
+		div1.addEventListener("mousedown",function(e){
+			flog = true;
+			offx = e.offsetX;
+			offy = e.offsetY;
+		})
+
+		document.addEventListener("mousemove",function(e){
+			if(flog){
+				div1.style.left = e.pageX - offx - box.offsetLeft + "px"
+				div1.style.top = e.pageY - offy - box.offsetTop + "px"
+			}
+		})
+
+		document.addEventListener("mouseup",function(){
+			flog = false;
+		})
+
+
+		//偏移量？
+
+
+
+
+	</script>
+</body>
+</html>

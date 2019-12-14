@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.ul1{
+			list-style: none;
+			padding:0;
+			margin:0;
+			display: none;
+		}
+		.ul1.active{
+			display: block;
+		}
+		.ul1 li.active{
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="text1">
+	<ul class="ul1">
+		
+	</ul>
+	<script src="exam.js"></script>
+	<script>
+		//debugger;
+		var text1 = document.querySelector(".text1")
+		var ul1 = document.querySelector(".ul1")
+
+		ul1.innerHTML = data.map(function(item){
+			return `<li>${item}</li>`
+		}).join("")
+
+		text1.addEventListener("input",function(){
+			if(this.value.length > 0){
+				ul1.classList.add("active")
+			}else{
+				ul1.classList.remove("active")
+			}
+		})
+
+		var index = 0;
+		var lis = [...ul1.children];
+		document.addEventListener("keydown",function(e){
+			if(e.keyCode == 38){
+				index--;
+				if(index<0){
+					index = 0;
+				}			
+			}
+			if(e.keyCode == 40){
+				index++	
+				if(index == lis.length){
+					index = lis.length - 1;
+				}			
+			}
+			lis.forEach(function(item){
+				item.classList.remove("active")
+			})
+			lis[index].classList.add("active")
+			text1.value = lis[index].innerHTML;
+		})
+
+
+		document.addEventListener("click",function(e){
+			if(e.target.tagName === "LI"){
+				text1.value = e.target.innerHTML;
+				ul1.classList.remove("active")
+				index = 0;
+			}else{
+				ul1.classList.remove("active")
+			}
+		})
+
+	</script>
+</body>
+</html>

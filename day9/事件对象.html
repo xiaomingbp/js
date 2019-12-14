@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//事件对象：事件处理函数的第一个参数
+		//事件对象：存储里跟事件有关的信息的对象
+		
+		元素.on + 事件类型 = function(事件对象){
+
+		}
+
+		元素.addEventListener(事件类型,function(事件对象){
+
+		},boolean);
+
+		元素.attachEvent(on + 事件类型,function(事件对象){
+
+		});
+
+
+		鼠标坐标：
+
+			事件对象.offsetX 鼠标相对于元素的水平坐标
+			事件对象.offsetY 鼠标相对于元素的垂直坐标
+			事件对象.pageX   鼠标相对于页面的水平坐标
+			事件对象.pageY   鼠标相对于页面的垂直坐标
+			事件对象.clientX 鼠标相对于可视口的水平坐标
+			事件对象.clientY 鼠标相对于可视口的垂直坐标
+
+		事件对象.keyCode 键盘码
+
+		事件对象.target 事件源
+		事件对象.srcElement 事件源（IE）
+
+
+		事件对象.preventDefault()   阻止默认事件
+		事件对象.returnValue = false;  阻止默认事件(IE)
+
+		事件对象.stopPropagation()   阻止冒泡
+		事件对象.cancelBubble = true;  阻止冒泡(IE)
+
+	</script>
+</body>
+</html>

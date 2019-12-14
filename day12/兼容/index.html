@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="http://www.baidu.com">百度</a>
+	<script>
+		var a = document.querySelector("a");
+
+		a.addEventListener("click",function(e){
+			//事件对象的兼容
+			var Event = e || window.event; // 低版本ie浏览器里 事件对象是存放在  window.event属性里
+
+
+			//事件源的兼容
+			var target = e.target || e.srcElement;  //事件源
+
+			// 阻止默认事件
+			if(Event.preventDefault){  
+				Event.preventDefault();
+			}else{
+				Event.returnValue = false;
+			}
+
+			// 阻止冒泡  阻止事件流
+			if(Event.stopPropagation){ 
+				Event.stopPropagation();
+			}else{
+				Event.cancelBubble = true;
+			}
+		})
+
+
+	</script>
+</body>
+</html>

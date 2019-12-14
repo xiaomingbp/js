@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+
+	<input type="button" value="点击" class="btn">
+	<input type="button" value="点击2" class="btn2">
+	<script>
+		var btn = document.querySelector(".btn")
+		var btn2 = document.querySelector(".btn2")
+		
+		btn.addEventListener("click",function(){
+
+		})
+
+		btn.removeEventListener("click",function(){
+
+		})
+		/*
+			DOM2级事件的事件处理函数是匿名函数时这个事件无法删除
+		*/
+		
+		btn2.addEventListener("click",chenge);		
+		btn2.removeEventListener("click",chenge);  // 这个可以删除事件
+		function chenge(){
+
+		}
+
+
+
+
+
+		
+	</script>
+</body>
+</html>
