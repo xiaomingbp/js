@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			正则对象的方法：
+				验证：
+					语法：
+						正则对象.test(字符串)
+					返回值：
+						boolean (字符串里有匹配true，没有匹配false)
+
+				匹配：
+					语法：
+						正则对象.exec(字符串)
+					返回值：
+						数组 (有匹配)
+						null (没有匹配)
+
+		 */
+
+		 var str = "adadsf asdfasd asdf asdf 4 ad fe qwe2 3  d 23 f";
+		 var reg = /\d/
+
+		 // 正则对象.lastIndex  默认值是0  修饰符：g时可以被修改
+		 // 下一次要匹配的位置
+		 
+		 console.log(reg.lastIndex)  // 0
+		 console.log(reg.test(str))
+		 console.log(reg.exec(str))
+
+		 console.log(reg.lastIndex)  //26
+		 console.log(reg.test(str))
+		 console.log(reg.exec(str))
+
+		 console.log(reg.lastIndex) // 37
+		 console.log(reg.test(str))
+		 console.log(reg.exec(str))
+
+		 console.log(reg.lastIndex) // 39
+		 console.log(reg.test(str))
+		 console.log(reg.exec(str))
+
+		 console.log(reg.lastIndex) // 44
+		 console.log(reg.test(str))
+		 console.log(reg.exec(str))
+
+		 console.log(reg.lastIndex) // 45
+		 console.log(reg.test(str))
+		 console.log(reg.exec(str))
+
+	</script>
+</body>
+</html>

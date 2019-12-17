@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+	
+	/*			
+		检索：
+			str.search(reg)
+			返回值：数字（匹配结果的下标 indexOf类似）
+				匹配不上：-1
+				匹配上：对应的下标
+				*不支持全局匹配
+
+		匹配：
+			str.match(reg)
+			返回值：数组
+				匹配不上：null
+				匹配上：
+					修饰符时g: 所有匹配结果组成的数组
+					修饰符不是g时：第一个匹配结果（包含下标信息 index ==> 也叫详细信息）
+
+		字符串分割成数组：
+			str.split(reg)
+			返回值：数组
+			默认全局匹配
+
+		字符串替换：
+			str.replace(reg,str1)
+			str.replace(reg,fn)
+			返回值：字符串
+			修饰符时g: 替换所有匹配结果
+			修饰符不是g时：替换第一个匹配结果
+
+	*/
+
+		var str = "jin tian shi zhou 1,2019-12-16 ri。 ming tian: you ri kao ti qian 20 fen zhong zuo zhun bei,ming? nian 2020-02-02! kai xue";
+
+		var reg = /\d{4}-\d{1,2}-\d{1,2}/
+
+		console.log(str.search(reg));
+		console.log(str.search(reg));
+		console.log(str.match(reg));
+
+		console.log(str.split(/[ ,?。：:!]/))
+
+		
+
+	
+	 </script>
+
+</body>
+</html>

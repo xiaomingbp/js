@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//去掉开始位置和结束位置的空格
+		var str = "  sdfasd      "
+		var reg = /^\s+|\s+$/g
+
+		var str2 = str.replace(reg,"")
+		console.log(str2)
+
+		var str3 = str.replace(reg,function(){
+			return "";
+		})
+		console.log(str3);
+
+		
+
+
+
+
+
+	</script>
+</body>
+</html>

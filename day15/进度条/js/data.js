@@ -1,0 +1,27 @@
+var gdp = [
+	{
+		city:"北京",
+		color:"red",
+		num:4503
+	},
+	{
+		city:"上海",
+		color:"green",
+		num:4223
+	},
+	{
+		city:"杭州",
+		color:"blue",
+		num:3143
+	},
+	{
+		city:"广州",
+		color:"pink",
+		num:5203
+	},
+	{
+		city:"山西",
+		color:"black",
+		num:2003
+	}
+]

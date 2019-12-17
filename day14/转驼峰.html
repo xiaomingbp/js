@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+		
+		var str = "abc"
+
+
+		var reg = /(a)(b)(c)/
+
+		// $0 ==  /abc/
+		// $1 == /a/
+		// $2 == /b/
+		// $3 == /c/
+	
+		console.log(str.replace(reg,function($0,$1,$2,$3){
+			return $0 + ":" + $3 + $2 + $1;
+		}))
+
+		// abc:cba
+
+
+
+		// var str = "ni hao abc jin tian ba wei";
+		// var reg = /(^| )([a-z])/g
+		// var str1 = str.replace(reg,function($0,$1,$2){
+		// 	return $1 + $2.toUpperCase();
+		// })
+		// console.log(str1)
+
+
+
+	</script>
+</body>
+</html>

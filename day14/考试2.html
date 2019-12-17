@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+		}
+		ul{
+			list-style: none;
+		}
+	</style>
+	
+</head>
+<body>
+	
+	<script>
+	/*
+	1.	使用正则将background-size 转为 backgroundSize ；background-position-x 转为 backgroundPositionX
+	2.	将[“八维”,”网站”] 将数组中出现的字符替换成*号几个字符替换成几个*号
+	*/
+
+	var str = "background-position-x"
+	var reg = /-([a-z])/g
+	var str2 = str.replace(reg,function($0,$1){
+		return $1.toUpperCase();
+	})
+
+	console.log(str2)
+
+	/****************************************************************/
+
+	var arr = ["八维","网站"]
+
+	var reg2 = /[\u4e00-\u9fa5]/g
+	arr.forEach(function(item,index){
+		arr[index] = item.replace(reg2,"*")
+	})
+	console.log(arr);
+
+
+
+	</script>
+</body>
+</html>

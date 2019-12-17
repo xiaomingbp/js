@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<pre>		
+		面向对象（就是一种开发模式）
+		
+			特点：
+				封装
+				继承
+				多态
+		
+		创建
+			对象字面量
+				var obj = {}
+				对象的类型都是Object类型
+
+			构造函数创建
+				var obj = new Object();
+				对象的类型跟构造函数的名字是一样的。
+
+				var arr = new Array()   arr的类型是Array
+				var t = new Date();   t的类型是Date
+				var reg = new RegExp()  reg的类型是RegExp
+
+		
+		用于批量创建对象的方法
+
+			function createRen(sname,sage,sex){
+				var obj = {
+					name:sname,
+					age:sage,
+					sex:ssex
+				}
+				return obj;
+			}
+
+			优点：能批量创建对象
+			缺点：对象的类型都是Object
+
+
+		构造函数
+			构造函数可以常见特定类型的对象。
+			什么是构造函数？
+				用new调用的函数就是构造函数
+
+				特定：
+					构造函数名的要首字母大写（推荐，目的是跟普通函数进行区分）
+					将对象的属性都设置this上
+					没有return
+					用new调用
+
+
+		原型
+			prototype
+
+
+		组合模型
+
+		
+
+	</pre>
+	<script>
+		//工厂模式
+		function cRen(sname,sage){
+			var obj = {
+				name:sname,
+				age:sage
+			}
+			return obj;
+		}
+
+		function cZhu(sname,sage){
+			var obj = {
+				name:sname,
+				age:sage
+			}
+			return obj;
+		}
+
+		var r1 = cRen("翠花",18)
+		var r2 = cRen("铁柱",20)
+
+		var z1 = cZhu("翠花1",2)
+		var z2 = cZhu("铁柱2",3)
+
+		//对象 instanceof 构造函数名    
+		/**************************************************/
+		function Ren(sname,sage){
+			this.name = sname;
+			this.age = sage;
+			this.getName = function(){
+
+			}
+		}
+
+		var r1 = new Ren("翠花",18);
+		var r2 = new Ren("铁柱",20);
+
+		缺点：构造函数里设置方法的话，创建的对象多时耗内存。
+
+
+
+
+
+	</script>
+</body>
+</html>

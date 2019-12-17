@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var str = "jin tian shi zhou 1,2019-12-16 ri ming tian you ri kao ti qian 20 fen zhong zuo zhun bei";
+
+		var reg = /\d/
+		console.log(reg.test(str))
+		console.log(reg.lastIndex); // ? 0
+
+		var reg1 = /\d{2}/g
+		console.log(reg1.lastIndex); // ? 0
+		console.log(reg1.test(str)) // true   reg1.lastIndex = 22
+
+
+		console.log(reg1.exec(str)); // ["19"]   reg1.lastIndex = 24
+
+
+	</script>
+</body>
+</html>

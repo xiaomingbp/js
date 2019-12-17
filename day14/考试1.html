@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+		}
+		ul{
+			list-style: none;
+		}
+	</style>
+	
+</head>
+<body>
+	<input type="text" class="text1">
+	<ul class="ul1">
+		<li>张三</li>
+		<li>李四三</li>
+		<li>张少天</li>
+		<li>赵四三</li>
+		<li>赵麻子</li>
+		<li>吴京</li>
+		<li>吴月</li>
+		<li>张曹</li>
+	</ul>
+	<script>
+		//var arr = ["张三","李四三","张少天","赵四三","赵麻子","吴京","吴月","张曹"]
+		
+		var text1 = document.querySelector(".text1");
+		var lis = [...document.querySelectorAll(".ul1 li")];
+		text1.addEventListener("input",function(){			
+			var reg = new RegExp(text1.value);
+			lis.forEach(function(item){
+				if(reg.test(item.innerHTML)){     // item.innerHTML.sreach(reg) != -1
+					item.style.display = "block"
+				}else{
+					item.style.display = "none"
+				}				
+			})
+
+		})
+
+
+	</script>
+</body>
+</html>
