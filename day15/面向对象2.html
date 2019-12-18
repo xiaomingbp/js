@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		/*
+		var parent = {
+			firstName:"孙"
+		}
+
+		var Son = {
+			name:"孙悟空"
+		}
+
+		Son.__proto__ = parent;
+
+
+		console.log(Son.firstName)
+		*/
+	
+		/*
+		function Person(){
+			this.firstName = "孙"
+		}
+		Person.prototype = {}
+
+
+		function Son(){
+			Person.call(this); // Person.apply(this);     // 利用构造函数继承    继承私有的属性和方法
+			this.name = "悟空"
+		}
+		//Son.prototype = new Person();  // 这儿不允许传递参数
+		
+
+		Son.prototype = Person.prototype    // 原型继承     继承公共的属性和方法
+		var s1 = new Son()
+		*/
+
+
+
+		/********************************************************************************/
+
+		//总结：
+
+			function Person(firstName){
+				this.firstName = firstName
+			}
+			Person.prototype.getName = function(){
+				console.log(this.firstName)
+			}
+
+			var p1 = new Person("孙")
+			console.log(p1)
+			p1.getName();
+
+
+
+			function Son(firstName){
+				//继承私有的属性和方法
+				Person.call(this,firstName);
+			}
+			//继承共享的属性和方法
+			Son.prototype = Person.prototype;
+
+			var s1 = new Son("sun");
+			console.log(s1);
+			s1.getName();
+
+		
+
+	</script>
+</body>
+</html>

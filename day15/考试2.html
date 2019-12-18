@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="user">
+	<input type="text" class="pass">
+</body>
+<script>
+	var user = document.querySelector(".user");
+	var pass = document.querySelector(".pass");
+
+	var user_reg = /^[A-z0-9]{6,12}$/
+	var pass_reg = /^\w{2,8}$/
+
+	user.addEventListener("blur",function(){
+		if(user_reg.test(this.value)){
+			console.log("正确");
+		}else{
+			console.log("错误")
+		}
+	});
+
+	pass.addEventListener("blur",function(){
+		if(pass_reg.test(this.value)){
+			console.log("正确");
+		}else{
+			console.log("错误")
+		}
+	});
+
+</script>
+</html>

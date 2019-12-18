@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">
+		
+
+	</div>
+	
+	
+</body>
+<script>
+	var data = [
+		{
+			title:"用户名",
+			reg:"^[A-z]\\w{5,29}$",
+			disc:"6-30位字母，数字，_，字母开头"
+		},
+		{
+			title:"姓名",
+			reg:"^[\\u4e00-\\u9fa5]{2,8}$",
+			disc:"姓名填写规则，用于身份核验，请认真填写"
+		},
+		{
+			title:"证件号码",
+			reg:"^[1-9]\\d{16}(\\d|X)$",
+			disc:"用于身份核验，请认真填写"
+		},
+		{
+			title:"手机号",
+			reg:"^[1-9]\\d{16}(\\d|X)$",
+			disc:"用户发短信，请认真填写"
+		}
+	]
+
+	var box = document.querySelector(".box");
+	box.innerHTML = data.map(function(item){
+		return `<div>${item.title}：<input type="text" data-reg="${item.reg}" class=""><span>${item.disc}</span></div>`
+	}).join("")
+
+	var inputs = document.querySelectorAll("input");
+	inputs.forEach(function(item){
+		item.addEventListener("blur",function(){
+
+			var reg = new RegExp(item.getAttribute("data-reg"))
+			console.log(reg);
+			if(!reg.test(item.value)){
+				alert("不正确");
+			}			     
+		});
+	});
+
+	
+
+</script>
+</html>
