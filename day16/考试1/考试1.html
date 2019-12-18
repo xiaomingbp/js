@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width:500px;
+			margin:0 auto;
+		}
+		.box>div{
+			overflow: hidden;
+			border:1px solid red;
+		}
+		.box>div>img{
+			width:100px;
+			height: 100px;
+			margin-right:8px;
+			float: left;
+		}
+		.box>div>div{
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+				
+	</div>
+</body>
+<script src="js/data.js"></script>
+<script>
+	function Car(obj){
+		this.data = obj.data;
+		this.box = document.querySelector(obj.box);
+
+		this.rander();
+	}
+	Car.prototype.rander = function(){
+		this.box.innerHTML = this.data.map(function(item){
+			return `<div>
+				<img src="${item.src}" alt="">
+				<div>
+					<div class="title">${item.name}</div>
+					<div class="con">${item.address}</div>
+					<div class="price"><span>${item.price}</span><span>${item.oldprice}</span><span>${item.num}</span></div>
+				</div>
+			</div>`
+		}).join("")
+	}
+
+	new Car({
+		data:arr,
+		box:".box"
+	})
+
+
+</script>
+</html>

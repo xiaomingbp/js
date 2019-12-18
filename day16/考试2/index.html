@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			padding: 0;
+			margin:0;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<ul class="box">
+		
+	</ul>
+	<script src="js/data.js"></script>
+	<script>
+		// var obj = {
+		// 	name:"aaa",
+		// 	age:123,
+		// 	sex:"0"
+		// }
+		// for(var i in obj){
+		// 	console.log(i,obj[i])
+		// }
+
+		// var arr = [7,6,5,4]
+		// for(var i in arr){
+		// 	console.log(i,arr[i])
+		// }
+		// 
+		var box = document.querySelector(".box");
+		function showTitle(arr,c){
+			c++;
+			for(var i in arr){
+				box.innerHTML += `<li style="margin-left:${20*c}px;">${arr[i].title}</li>`;
+				if(arr[i].children){
+					showTitle(arr[i].children,c)
+				}
+			}
+		}
+		showTitle(data,0)
+
+		// function copyObj(newobj,obj){
+		// 	if(!newobj){
+		// 		newobj = obj instanceof Array ? []:{}
+		// 	}
+		// 	for(var i in obj){				
+		// 		if(typeof obj[i] == "object"){				
+		// 			newobj[i] = obj[i] instanceof Array ? []:{}
+		// 			copyObj(newobj[i],obj[i]);					
+		// 		}else{
+		// 			newobj[i] = obj[i]
+		// 		}
+		// 	}
+		// 	return newobj;
+		// }
+		// console.log(copyObj([],data))
+
+	</script>
+</body>
+</html>

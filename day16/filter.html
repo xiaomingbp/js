@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			过滤:
+				语法：
+					数组.filter(function(item,index,self){
+						return 条件
+					})
+		 */		
+
+		 var arr = [12,3,4,5,6,7,8,9];
+
+
+		var newarr = arr.filter(function(item,index,self){
+			return item > 5
+		})
+		console.log(newarr)
+
+		var newarr2 = arr.filter(function(item,index,self){
+			return item%2 == 0
+		})
+		console.log(newarr2)
+
+		var newarr3 = arr.filter(function(item,index,self){
+			return item%2 == 0 || item%3 == 0
+		})
+		console.log(newarr3)
+
+
+
+	</script>
+</body>
+</html>

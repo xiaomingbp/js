@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>aaa</li>
+		<li>bbb</li>
+		<li>ccc</li>
+		<li>ddd</li>
+		<li>eee</li>
+	</ul>
+	<script>
+		/*
+			1、call和apply是调用函数的函数，调用函数时修改函数里的this指向
+			2、call和apply的区别：
+				call的第一个参数是this的指向，从第二个开始跟被调用的函数的参数一一对应。
+				apply的第一个参数是this指向，第二个参数是数组或arguments
+
+
+			重点:
+				call和apply的第一个参数是null,undefined时this会指向window
+
+		*/
+	
+		var name = "baiping"
+		var obj = {
+			name:"xiaoming",
+			show:function(){
+				console.log(this.name)
+			}
+		}
+
+		obj.show(); 
+		obj.show.call(window);
+		obj.show.apply(window);
+
+
+		function abc(x,y){
+			console.log(this + x + y)
+		}
+		abc() // window
+		abc.call("aaa",10,20)  // "aaa1020"
+		abc.apply("aaa",[10,20]) // "aaa1020"
+ 
+
+		var arr = [855,8,5,96,5,8,7,56,5,8,48,2,2,8,5,6];		
+
+		console.log(Math.max.apply(null,arr));
+		console.log(Math.min.apply(null,arr));
+
+		/*****************************************/
+
+
+		var lis = document.getElementsByTagName("li");
+		var li = document.createElement("li");
+
+		//[].slice.call(lis)
+		//var newarr = [].slice();  // this === []
+		var newarr = [].slice.call(lis)  // this === lis  也就是slice函数返回的新数组就是lis
+
+		/*
+			类数组转数组  
+				[].slice.call(类数组)
+				 Array.prototype.slice.call(类数组)
+				 [...类数组]
+				 Array.from(类数组)
+		 */
+
+		newarr.push(li);
+
+
+		function test(){
+			console.log(this);
+		}
+
+		test()  // window
+		test.call({"name":"abc"})   // {"name":"abc"}
+		test.call(123)    // 123
+		test.call(0);   // 0
+		test.call("")   // ""
+		test.call(null) // window
+		test.call(true) // true
+		test.call(false)  // false
+		test.call(undefined); // window
+		test.call(NaN)  // NaN
+		test.call()   // window
+
+
+	</script>
+</body>
+</html>

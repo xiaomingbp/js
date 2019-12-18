@@ -1,0 +1,34 @@
+var arr = [
+	{
+		src:"img/1.jpg",
+		name:"全聚",
+		address:"天安门",
+		oldprice:400,
+		price:40,
+		num:4000
+	},
+	{
+		src:"img/2.jpg",
+		name:"聚德",
+		address:"天安门",
+		oldprice:400,
+		price:40,
+		num:4000
+	},
+	{
+		src:"img/3.jpg",
+		name:"聚",
+		address:"天安门",
+		oldprice:400,
+		price:40,
+		num:4000
+	},
+	{
+		src:"img/4.jpg",
+		name:"德",
+		address:"天安门",
+		oldprice:400,
+		price:40,
+		num:4000
+	}
+]

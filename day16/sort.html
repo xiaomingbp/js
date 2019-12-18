@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var arr = ["a",1,2,10,11,"e","b",12,"a",85,6,"w",111,255,];
+		var newarr = arr.sort();
+		//console.log(newarr)
+
+
+		var newarr2 = arr.sort(function(a,b){  //  a小  b大
+			if(a < b){
+				return -1;
+			}
+			if(a > b){
+				return 1;
+			}
+			return 0;
+		})
+		console.log(newarr2)
+		
+
+		var gdp = [
+			{
+				city:"北京",
+				color:"red",
+				num:4503
+			},
+			{
+				city:"上海",
+				color:"green",
+				num:4223
+			},
+			{
+				city:"杭州",
+				color:"blue",
+				num:3143
+			},
+			{
+				city:"广州",
+				color:"pink",
+				num:5203
+			},
+			{
+				city:"山西",
+				color:"black",
+				num:2003
+			}
+		]
+
+
+		var newarr3 = gdp.sort(function(a,b){
+			if(a["city"] < b["city"]){
+				return 1;
+			}
+			if(a["city"] > b["city"]){
+				return -1;
+			}
+			return 0;
+		})
+
+		console.log(newarr3)
+
+
+	</script>
+</body>
+</html>
