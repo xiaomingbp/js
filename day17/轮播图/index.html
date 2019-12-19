@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.banner{
+			width:1000px;
+			height:400px;
+			position: relative;
+			margin:0 auto;
+		}
+		.banner img{
+			width:1000px;
+			height:400px;
+			display: none;
+		}
+		.banner img.active{
+			display: block;
+		}
+		.focus{
+			width:100%;
+			position: absolute;
+			bottom:20px;
+			text-align: center;
+		}
+		.focus span{
+			display: inline-block;
+			width:20px;
+			height:20px;
+			border-radius: 50%;
+			background-color: red;
+		}
+		.focus span.active{
+			background-color: yellow;
+		}
+		.btns{
+			width:100%;
+			position: absolute;
+			top:180px;
+			overflow: hidden;
+		}
+		.btns>span{
+			display: inline-block;
+			width:60px;
+			height: 60px;
+			background-color: rgba(255,255,255,0.5);
+			line-height: 60px;
+			text-align: center;
+		}
+		.btns>span:hover{
+			background-color: rgba(0,0,0,0.5);
+			color:#fff;
+		}
+		.nextbtn{
+			float: right;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<div class="imgs"></div>
+		<div class="focus"></div>
+		<div class="btns">
+			<span class="prevbtn">《</span>
+			<span class="nextbtn">》</span>
+		</div>
+	</div>
+</body>
+<script src="js/data.js"></script>
+<script>
+	function Banner(obj){
+		this.data = obj.data;
+		this.banner = document.querySelector(obj.banner);
+		this.imgs = document.querySelector(obj.imgs);
+		this.focus = document.querySelector(obj.focus);
+		this.prevbtn = document.querySelector(obj.prevbtn);
+		this.nextbtn = document.querySelector(obj.nextbtn);
+
+		this.index = 2;  // 默认显示图片的下标
+		this.t = null;
+		this.timer = obj.timer || 1000;
+		this.render();// 初始化图片
+		this.show(); // 默认显示
+		this.run();
+		this.bindEvent();
+	}
+	Banner.prototype.render = function(){
+		this.imgs.innerHTML = this.data.map(function(item){
+			return `<img src="${item}">`
+		}).join("")
+
+		this.focus.innerHTML = this.data.map(function(){
+			return `<span></span>`
+		}).join("")
+	}
+	Banner.prototype.show = function(){
+		var that = this;
+		var imgs_child = [...this.imgs.children]
+		imgs_child.forEach(function(el,i){
+			that.imgs.children[i].classList.remove("active")
+			that.focus.children[i].classList.remove("active")
+		})
+		this.imgs.children[this.index].classList.add("active")
+		this.focus.children[this.index].classList.add("active")
+	}
+
+	Banner.prototype.run = function(){
+		var that =this;
+		this.t = setInterval(function(){
+			that.index++;
+			if(that.index == that.imgs.children.length){
+				that.index = 0;
+			}
+			that.show();
+		},this.timer)
+	}
+
+	Banner.prototype.bindEvent = function(){
+		var that = this;
+		this.prevbtn.addEventListener("click",function(){
+			that.index--;
+			if(that.index < 0){
+				that.index = that.imgs.children.length - 1;
+			}
+			that.show();
+		});
+		
+		this.nextbtn.addEventListener("click",function(){
+			that.index++;
+			if(that.index == that.imgs.children.length){
+				that.index = 0;
+			}
+			that.show();
+		});
+
+		this.banner.addEventListener("mouseover",function(){
+			clearInterval(that.t);
+		})
+		this.banner.addEventListener("mouseout",function(){
+			that.run();
+		})
+	}
+
+	new Banner({
+		data:arr,
+		banner:".banner",
+		imgs:".imgs",
+		focus:".focus",
+		nextbtn:".nextbtn",
+		prevbtn:".prevbtn",
+		timer:1000
+	})
+
+
+</script>
+</html>
