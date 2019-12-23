@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+
+		Person.prototype.show = function(){
+
+		}
+
+		var p1 = new Person("aaa",12);
+		var p2 = new Person("bbb",12);
+
+
+
+
+		function Son(sex,name,age){
+			this.sex = sex;
+			Person.call(this,name,age);
+		}
+
+		var s1 = new Son("男","xiaohua",18);
+
+		new是用来调用函数的
+		为什么要用new调用函数，因为new可以将函数里的this指向实例化对象
+
+
+		Son.prototype = new Person();
+
+		var s2 = new Son();
+		s2.name
+		s2.show()
+
+	</script>
+</body>
+</html>

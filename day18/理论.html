@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		debugger;
+		function getCar() {
+		    this.type ='大众';
+		}
+		function myCar() {getCar.call(this)};
+		var car = new myCar();
+		console.log(car.type)
+
+	</script>
+</body>
+</html>

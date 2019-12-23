@@ -34,12 +34,12 @@
 		var flog = false;  // 鼠标是否按下的状态
 		var offx = 0;
 		var offy = 0;
+
 		title.addEventListener("mousedown",function(e){
 			flog = true;
 			offx = e.offsetX;
 			offy = e.offsetY;
 		})
-
 
 		document.addEventListener("mousemove",function(e){
 			if(flog){
