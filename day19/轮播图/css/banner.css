@@ -1,0 +1,59 @@
+.banner{
+	width:1000px;
+	height:400px;
+	position: relative;
+	margin:0 auto;
+}
+.move{
+	width:600%;
+	overflow: hidden;
+	position: absolute;
+	transform: translateX(-1000px);	
+}
+.banner img{
+	width:1000px;
+	height:400px;
+	float: left;
+}
+.banner img.active{
+	display: block;
+}
+.banner .focus{
+	width:100%;
+	position: absolute;
+	bottom:20px;
+	text-align: center;
+}
+.banner .focus span{
+	display: inline-block;
+	width:20px;
+	height:20px;
+	border-radius: 50%;
+	background-color: red;
+	margin:10px;
+}
+.banner .focus span.active{
+	background-color: yellow;
+}
+.banner .btns{
+	width:100%;
+	position: absolute;
+	top:180px;
+	overflow: hidden;
+}
+.banner .btns>span{
+	display: inline-block;
+	width:60px;
+	height: 60px;
+	background-color: rgba(255,255,255,0.5);
+	line-height: 60px;
+	text-align: center;
+	margin:10px;
+}
+.banner .btns>span:hover{
+	background-color: rgba(0,0,0,0.5);
+	color:#fff;
+}
+.banner .nextbtn{
+	float: right;
+}

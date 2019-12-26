@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="erji"></div>
+	<div class="sanji"></div>
+	<script src="data.js"></script>
+	<script>
+		function Caidan(obj){
+			this.data = obj.data;
+			this.box = document.querySelector(obj.box);
+			this.erji = document.querySelector(obj.erji);
+			this.sanji = document.querySelector(obj.sanji);
+			this.render(this.box,this.data);
+
+			this.bindEvent();
+		}
+		Caidan.prototype.render = function(el,arr){
+			el.innerHTML = arr.map(function(item,index){
+				return `<div data-i="${index}">${item.name || item}</div>`
+			}).join("")
+		}
+		Caidan.prototype.bindEvent = function(){
+			var that = this;
+			var data;
+			this.box.addEventListener("click",function(e){
+				if(e.target.parentNode.classList.contains("box")){
+					data = that.data[e.target.getAttribute("data-i")].type;
+					that.render(that.erji,data);
+					that.sanji.innerHTML = "";
+				}
+			})
+
+			this.erji.addEventListener("click",function(e){
+				if(e.target.parentNode.classList.contains("erji")){
+					var sanji = data[e.target.getAttribute("data-i")].type;
+					that.render(that.sanji,sanji);
+				}
+			})
+
+			this.sanji.addEventListener("click",function(e){
+				if(e.target.parentNode.classList.contains("sanji")){
+					console.log(e.target)
+				}
+			})
+		}
+
+		new Caidan({
+			data:data,
+			box:".box",
+			erji:".erji",
+			sanji:".sanji"
+		})
+	</script>
+</body>
+</html>

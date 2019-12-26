@@ -1,0 +1,4056 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <meta name="apple-mobile-web-app-capable" content="yes" >
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black" >
+	  <meta name="format-detection" content="telephone=no">
+	  <meta name="format-detection" content="email=no" >
+      <!--[if lt IE 9]>
+         <script src="http://172.16.10.111:8083/exam_admin/resources/bootstrap/libs/html5shiv.js"></script>
+         <script src="http://172.16.10.111:8083/exam_admin/resources/bootstrap/libs/respond.min.js"></script>
+      <![endif]-->
+      <!-- 新head -->
+      <link href="http://172.16.10.111:8083/exam_admin/resources/css/app_bootstrap.css"                           rel ="stylesheet">
+	  <link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/bootstrap.min.css"               rel="stylesheet" />
+	  <link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/font-awesome.min.css"            rel="stylesheet" />
+	  <link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/weather-icons.min.css"           rel="stylesheet" />
+	  <link id="beyond-link" href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/beyond.min.css" rel="stylesheet" />
+	  <link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/demo.min.css"                    rel="stylesheet" />
+	  <link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/typicons.min.css"                rel="stylesheet" />
+	  <link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/animate.min.css"                 rel="stylesheet" />
+	  <script type="text/javascript"   src ="http://172.16.10.111:8083/exam_admin/resources/boot.js"></script>
+	  <script src="http://172.16.10.111:8083/exam_admin/resources/skin/assets/js/myskins.min.js"></script>
+      
+
+<link href="http://172.16.10.111:8083/exam_admin/resources/css/bootstrap-huan.css" rel="stylesheet">
+<link href="http://172.16.10.111:8083/exam_admin/resources/skin/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="http://172.16.10.111:8083/exam_admin/resources/exam/css/style.css" rel="stylesheet"> 
+
+<link href="http://172.16.10.111:8083/exam_admin/resources/css/exam.css" rel="stylesheet">
+<title>班级试卷错题分析</title>
+<style>
+pre{
+	border: 0px;
+} 
+#add-more-qt-to-paper {
+	cursor: pointer;
+	color: #1ba1e2;
+}
+
+#add-more-qt-to-paper:hover {
+	color: #ff7f74;
+}
+
+#add-more-qt-to-paper i {
+	color: #47a447;
+	cursor: pointer;
+	margin-right: 5px;
+}
+
+#qt-selector-iframe {
+	border: none;
+	height: 600px;
+}
+
+.tmp-ques-remove {
+	margin-left: 10px;
+}
+
+.question-point {
+	padding: 0 8px;
+	margin: 0 2px;
+	border-bottom: 1px solid;
+	/* 	cursor: pointer; */
+}
+select {
+	width: 120px
+}
+td.tdName {
+	width: 6%;
+}
+.mytitle,.fa-align-justify{
+font-size:15px;
+}
+</style>
+</head>
+<body>
+	<div id="main">
+		<div class="well with-header with-footer">
+			<div class="header bordered-themeprimary bg1">
+				<i class="fa fa-pencil mytitle">班级试卷错题分析</i>
+				<button type="button" class="btn btn-primary btn-xs"
+					style="float: right;" onclick="window.close();">
+					<i class="fa fa-undo"></i>关闭
+				</button>
+			</div>
+			<div class="widget-body ">
+				<div>
+					<div>
+						<h1>
+							<i class="fa fa-align-justify">试卷信息</i>
+						</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<table class="table table-bordered  table-striped">
+							<tbody>
+								<tr>
+									<td class="tdName">&nbsp;试卷名称：
+									</td>
+									<td colspan="5" class="tdContent"><span>-</span>
+										<input type="text" name="name" id="name" value="P0078-网站JavaScript前端开发下周考3理论" readonly="readonly" style="width:20%"/>
+										<span style="color: red"></span> <input type="hidden" id="id"
+										value="1cdea44d03c143bdac0f89c0c8a5c264" name="id"></td>
+								</tr>
+								<tr>
+									<td class="tdName">试卷层级：</td>
+									<td width="9%">学院&nbsp;<select
+										id="college" onchange="loadTree($(this))" class="1"
+										name="group1" disabled="disabled" style="width:75%; height:22px">
+										<option>网站工程学院</option>
+									</select><span style="color: red"></span></td>
+									<td width="10%">方向&nbsp;<select id="stage" value=""
+										onchange="loadTree($(this))" class="1" name="group2" disabled style="width:80%; height:22px">
+										<option></option>
+									</select></td>
+									<td width="12%">阶段&nbsp;<select id="stage2" value=""
+										onchange="loadTree($(this))" class="1" name="group3" disabled style="width:82%; height:22px">
+										<option></option>
+									</select></td>
+									<td width="14%">课程&nbsp;<select id="stage3" value=""
+										onchange="loadTree($(this))" class="1" name="group4" disabled style="width:85%; height:22px">
+										<option></option>
+									</select></td>
+									<td width="18%">单元&nbsp;<select id="stage4" value=""
+										onchange="loadTree($(this))" class="1" name="group5" disabled style="width:88%; height:22px">
+										<option></option>
+									</select></td>
+								</tr>
+								<tr>
+									<td class="tdName" style="width: 10px">&nbsp;及格分数：
+									</td>
+									<td colspan="5" class="tdContent"><input type="text"
+										name="passPoint" id="passPoint" maxlength="3"
+										value="90" readonly="readonly" style="width: 150px"/><span style="color: red"></span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="widget-body ">
+				<div>
+					<div>
+						<h1>
+							<i class="fa fa-align-justify">试卷错题分析</i>
+						</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<table class="table table-bordered  table-striped">
+							<tbody>
+								<tr>
+									<td>
+										<form name="saveForm" id="saveForm" method="post">
+											<div class="def-bk" id="bk-exampaper">
+												<div class="expand-bk-content" id="bk-conent-exampaper">
+													<div id="exampaper-header">
+														<div id="exampaper-desc-container">
+															<div id="exampaper-desc" class="exampaper-filter"></div>
+															<div style="margin-top: 5px;">
+																<span>试卷总分：</span><span id="exampaper-total-point"
+																	style="margin-right: 20px;"></span>
+															</div>
+														</div>
+													</div>
+													<ul id="exampaper-body" style="padding: 0px;">
+														<!-- 开始加载试卷 -->
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">1.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">a7e7aacf25584d9b9b6f20951f471be4</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）鼠标悬停，即鼠标停留在图片等的上方触发()</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_a7e7aacf25584d9b9b6f20951f471be4" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								onmouseover
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_a7e7aacf25584d9b9b6f20951f471be4" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								onblur
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_a7e7aacf25584d9b9b6f20951f471be4" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								click
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_a7e7aacf25584d9b9b6f20951f471be4" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								ondblclick
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：循环，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">71%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、王栋[162231001331]、张景源[19444100273]、候文军[19444100152]、王志文[17377100217]、杨童童[17373100022]、王昆鹏[19444100289]、王文彪[19444100313]、朱静静[17381100279]、曹育聪[19444100337]、要威[19444100305]、韩舒[19444100316]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">2.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">84fd086b477a4c53932f485e968b1d59</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）鼠标移出，即离开图片等所在的区域触发()</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_84fd086b477a4c53932f485e968b1d59" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								ondblclick
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_84fd086b477a4c53932f485e968b1d59" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								onchange
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_84fd086b477a4c53932f485e968b1d59" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								onmouseout
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_84fd086b477a4c53932f485e968b1d59" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								onmouseover
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						C
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：数据类型，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、候文军[19444100152]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">3.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">af0d8208737e4d29aeb9386ff8870716</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）表单提交事件时触发()</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_af0d8208737e4d29aeb9386ff8870716" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								onsubmit
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_af0d8208737e4d29aeb9386ff8870716" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								onsubmit
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_af0d8208737e4d29aeb9386ff8870716" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								onunload
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_af0d8208737e4d29aeb9386ff8870716" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								ondblclick
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支语句，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">53%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、王栋[162231001331]、张晨[19444100292]、候文军[19444100152]、杨童童[17373100022]、陈坤[19444100301]、王文彪[19444100313]、朱静静[17381100279]、韩舒[19444100316]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">4.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">feeac2eedb0c41b1985b53a998c77444</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)IE浏览器采用的事件流是（    ）流？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_feeac2eedb0c41b1985b53a998c77444" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								事件捕获
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_feeac2eedb0c41b1985b53a998c77444" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								事件冒泡
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_feeac2eedb0c41b1985b53a998c77444" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								事件委托
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_feeac2eedb0c41b1985b53a998c77444" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">6%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">5.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">fc54dc4683ab4601b778ce17a41f7f10</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)Netscapte网景浏览器采用（  ）流，先由不具体的元素接收事件，最具体的节点最后才接收到事件？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_fc54dc4683ab4601b778ce17a41f7f10" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								事件冒泡
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_fc54dc4683ab4601b778ce17a41f7f10" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								事件捕获
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_fc54dc4683ab4601b778ce17a41f7f10" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								事件委托
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_fc54dc4683ab4601b778ce17a41f7f10" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">24%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>崔惠敏[19444100240]、杨童童[17373100022]、要威[19444100305]、孙雨萌[19444100318]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">6.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">1c0fe95227d149e9af80426e70b5208e</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)不是所有事件都能用事件委托来完成，例如()就没有冒泡</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_1c0fe95227d149e9af80426e70b5208e" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								blur
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_1c0fe95227d149e9af80426e70b5208e" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								DOM0级事件
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_1c0fe95227d149e9af80426e70b5208e" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								DOM1级事件
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_1c0fe95227d149e9af80426e70b5208e" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								DOM2级事件
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">7.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">69ca2abeec8a4a2aa68936f4e5092699</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）超链接默认形为是跳转页面，通过（   ）方法可以取消该动作？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_69ca2abeec8a4a2aa68936f4e5092699" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								preventDefault()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_69ca2abeec8a4a2aa68936f4e5092699" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								stopPropagation()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_69ca2abeec8a4a2aa68936f4e5092699" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								type=true
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_69ca2abeec8a4a2aa68936f4e5092699" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>王志文[17377100217]、杨童童[17373100022]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">8.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">0b5f02e17e044440a9188a41c16e4338</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)获取target兼容写法正确的是</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_0b5f02e17e044440a9188a41c16e4338" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								event.target || event.srcElement
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_0b5f02e17e044440a9188a41c16e4338" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								event || (event = window.event)
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_0b5f02e17e044440a9188a41c16e4338" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								event.target || event.preventDefault
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_0b5f02e17e044440a9188a41c16e4338" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">6%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杨童童[17373100022]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">9.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">4c40373622db49fd87ed370492a47455</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)	returnValue 属性？阻止事件的默认行为 ()表示阻止事件的默认行为</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_4c40373622db49fd87ed370492a47455" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								true
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_4c40373622db49fd87ed370492a47455" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								false
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_4c40373622db49fd87ed370492a47455" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								boolean
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_4c40373622db49fd87ed370492a47455" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、陈坤[19444100301]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">10.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">fbd5ee145b16499387d62b43b6b0a1df</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）以下哪个语句可以将wrap元素下所有内容清空?</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_fbd5ee145b16499387d62b43b6b0a1df" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								wrap.innerHTML=&#034;&#034;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_fbd5ee145b16499387d62b43b6b0a1df" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								wrapt.value=&#034;&#034;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_fbd5ee145b16499387d62b43b6b0a1df" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								wrap.innerHTML==&#034;&#034;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_fbd5ee145b16499387d62b43b6b0a1df" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								wrap.value==&#034;&#034;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">11.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">2d47b363cee64016afe2b347b34f6e5c</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)以下哪个事件是文本框获取焦点事件？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_2d47b363cee64016afe2b347b34f6e5c" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								blur
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_2d47b363cee64016afe2b347b34f6e5c" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								focus
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_2d47b363cee64016afe2b347b34f6e5c" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								submit
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_2d47b363cee64016afe2b347b34f6e5c" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								input
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">12.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">601b5bba5fd5413995773d315bbfaa15</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）在实现拖拽效果时要鼠标松开时卸载按下事件，使用什么事件？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_601b5bba5fd5413995773d315bbfaa15" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								mousedown
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_601b5bba5fd5413995773d315bbfaa15" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								mouseup
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_601b5bba5fd5413995773d315bbfaa15" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								mousemove
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_601b5bba5fd5413995773d315bbfaa15" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								mouselevel
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">41%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、张晨[19444100292]、崔惠敏[19444100240]、王文彪[19444100313]、曹育聪[19444100337]、要威[19444100305]、韩舒[19444100316]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">13.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">12e4c0d88f6648d4895bff23edbb14a4</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)使用getAttribue获取节点属性，如果属性不存在则返回结果为?</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_12e4c0d88f6648d4895bff23edbb14a4" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								undefined
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_12e4c0d88f6648d4895bff23edbb14a4" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								null
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_12e4c0d88f6648d4895bff23edbb14a4" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								&#034;&#034;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_12e4c0d88f6648d4895bff23edbb14a4" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						B
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">14.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">19ab2404c4d4412c9818256bdbe05350</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）function change(e){ var e = e || window.event;}函数内的语句与以下哪个选项的作用一致？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_19ab2404c4d4412c9818256bdbe05350" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								var e = event || window.event
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_19ab2404c4d4412c9818256bdbe05350" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								var e =  window.event || event
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_19ab2404c4d4412c9818256bdbe05350" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								var e = e?event:window.evt
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_19ab2404c4d4412c9818256bdbe05350" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								var e = e?e:window.event
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						D
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">35%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>王栋[162231001331]、张晨[19444100292]、崔惠敏[19444100240]、候文军[19444100152]、朱静静[17381100279]、孙雨萌[19444100318]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">15.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">b46a2102f2554dfc98e81e1d82347ea6</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)var num = 30;
+function changeNum(){
+ var num = 40;
+}
+changeNum();
+alert(num);以上代码最后alert结果为？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_b46a2102f2554dfc98e81e1d82347ea6" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								30
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_b46a2102f2554dfc98e81e1d82347ea6" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								40
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_b46a2102f2554dfc98e81e1d82347ea6" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								报错不能声明同一变量
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_b46a2102f2554dfc98e81e1d82347ea6" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								undefined
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">16.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">6d668be121ea403ea38c394a01e74685</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)&lt;div id=&#034;title&#034;&gt;八维&lt;b&gt;学子&lt;/b&gt;&lt;/div&gt;，document.getElemenById(&#034;title&#034;).innerText的值为：</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_6d668be121ea403ea38c394a01e74685" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								八维
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_6d668be121ea403ea38c394a01e74685" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								八维&lt;b&gt;学子&lt;/b&gt;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_6d668be121ea403ea38c394a01e74685" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								八维学子
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_6d668be121ea403ea38c394a01e74685" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								学子
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">18%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、张景源[19444100273]、要威[19444100305]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">17.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">8f58da159646486cb2fe1f1686b83432</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）&lt;div id=&#034;box&#034;&gt;&lt;span&gt;北京八维&lt;/span&gt;&lt;b&gt;网站工程&lt;/b&gt;&lt;/div&gt;console.log(document.getElementById(&#034;box&#034;).lastChild.nodeType);的结果是？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_8f58da159646486cb2fe1f1686b83432" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								1
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_8f58da159646486cb2fe1f1686b83432" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								2
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_8f58da159646486cb2fe1f1686b83432" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								3
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_8f58da159646486cb2fe1f1686b83432" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								8
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						A
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>王栋[162231001331]、要威[19444100305]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">18.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">37690d1659e54f47ad77b3b2c34032dd</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）var str = &#039;abcd&#039;;console.log(typeof str.indexOf(&#039;a&#039;))以上代码运行结果为？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_37690d1659e54f47ad77b3b2c34032dd" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								string
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_37690d1659e54f47ad77b3b2c34032dd" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								object
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_37690d1659e54f47ad77b3b2c34032dd" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								number
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_37690d1659e54f47ad77b3b2c34032dd" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								boolean
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						C
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">24%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、王昆鹏[19444100289]、陈坤[19444100301]、要威[19444100305]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">19.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">3c8ab581eb8447888e2db84d6639c121</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）可以通过什么属性获取当前元素下所有的子元素包括文本节点？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_3c8ab581eb8447888e2db84d6639c121" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								children
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_3c8ab581eb8447888e2db84d6639c121" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								nodeList
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_3c8ab581eb8447888e2db84d6639c121" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								childNodes
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_3c8ab581eb8447888e2db84d6639c121" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						C
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">53%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>张景源[19444100273]、王志文[17377100217]、王昆鹏[19444100289]、陈坤[19444100301]、王文彪[19444100313]、曹育聪[19444100337]、要威[19444100305]、胡振阳[19444100317]、孙雨萌[19444100318]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																	<!-- 单选 -->
+																	<li class="question qt-singlechoice"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">20.</span><span
+																				class="question-type" style="display: none;">singlechoice</span><span>[单选题]</span><span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">3</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">bba679ee887e4aed9a735785dea0a052</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)鼠标滑入轮播图时使用什么事件？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_bba679ee887e4aed9a735785dea0a052" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								mousedown
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_bba679ee887e4aed9a735785dea0a052" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								mouseup
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_bba679ee887e4aed9a735785dea0a052" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								mouseout
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_bba679ee887e4aed9a735785dea0a052" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								mousemove
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						C
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">53%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、张晨[19444100292]、崔惠敏[19444100240]、张景源[19444100273]、候文军[19444100152]、王昆鹏[19444100289]、陈坤[19444100301]、王文彪[19444100313]、曹育聪[19444100337]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">21.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">b8faebf15dd94828ad7c9c9e75ed3aa6</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）事件三要素是指()</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_b8faebf15dd94828ad7c9c9e75ed3aa6" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								事件源
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_b8faebf15dd94828ad7c9c9e75ed3aa6" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								事件
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_b8faebf15dd94828ad7c9c9e75ed3aa6" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								事件冒泡
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_b8faebf15dd94828ad7c9c9e75ed3aa6" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								事件处理程序
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						ABD
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：逻辑运算符，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">22.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">4713b21ee8534e3b8ccee77e76bc0218</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)在早期的IE浏览器，如：IE8中，没有实现addEventListener()和removeEventListener()，但提供了两个替代方法()和()。</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_4713b21ee8534e3b8ccee77e76bc0218" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								attachEvent()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_4713b21ee8534e3b8ccee77e76bc0218" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								addEventListener()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_4713b21ee8534e3b8ccee77e76bc0218" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								detachEvent()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_4713b21ee8534e3b8ccee77e76bc0218" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								box.onclick();
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						AC
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">6%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>候文军[19444100152]</span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">23.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">2ea7ff9fe050411385a179f88dbb60c6</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）以下哪些方法是事件对象的方法？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_2ea7ff9fe050411385a179f88dbb60c6" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								returnValue
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_2ea7ff9fe050411385a179f88dbb60c6" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								cancelBubble
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_2ea7ff9fe050411385a179f88dbb60c6" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								stopPropagation()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_2ea7ff9fe050411385a179f88dbb60c6" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								preventDefault()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						CD
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">24.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">e54c4c89a2474de1937099fb35cae97e</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）可以用于获取事件源的属性是哪些？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_e54c4c89a2474de1937099fb35cae97e" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								cancelBubble
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_e54c4c89a2474de1937099fb35cae97e" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								returnValue
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_e54c4c89a2474de1937099fb35cae97e" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								srcElement
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_e54c4c89a2474de1937099fb35cae97e" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								target
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						CD
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">25.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">a3abefe7e17a4700aa9aaa7c63d244bf</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）js中事件处理程序有哪些？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_a3abefe7e17a4700aa9aaa7c63d244bf" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								HTML事件处理程序
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_a3abefe7e17a4700aa9aaa7c63d244bf" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								DOM0级事件处理程序
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_a3abefe7e17a4700aa9aaa7c63d244bf" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								DOM1级事件处理程序
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_a3abefe7e17a4700aa9aaa7c63d244bf" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								DOM2级事件处理程序
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						ABD
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">26.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">d3daa186a32b4081adf6df7f8cd8c57d</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）DOM0级事件和DOM2级事件有哪些区别？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_d3daa186a32b4081adf6df7f8cd8c57d" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								DOM0级事件只支持事件冒泡阶段执行
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_d3daa186a32b4081adf6df7f8cd8c57d" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								DOM2级事件两种事件流都支持
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_d3daa186a32b4081adf6df7f8cd8c57d" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								DOM0级事件后添加的会替换之前的
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_d3daa186a32b4081adf6df7f8cd8c57d" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								以上说法都不对
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						ABC
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">27.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">bd2bae4932544233904af212bd28549e</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)与window.onscroll = navShow;具有相同功能的语句是（    ）？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_bd2bae4932544233904af212bd28549e" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								window.onscroll = navShow();
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_bd2bae4932544233904af212bd28549e" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								window[&#034;onscroll&#034;] = navShow;
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_bd2bae4932544233904af212bd28549e" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								window.onscroll = function(){navShow;}
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_bd2bae4932544233904af212bd28549e" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								window.onscroll = function(){navShow();}
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						BD
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">28.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">9a494b40f82746a184eb2764cf7d1db7</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)标准浏览器下获取样式的方法有哪些？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_9a494b40f82746a184eb2764cf7d1db7" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								obj.currentStyle.属性
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_9a494b40f82746a184eb2764cf7d1db7" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								obj.style.属性
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_9a494b40f82746a184eb2764cf7d1db7" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								obj.className
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_9a494b40f82746a184eb2764cf7d1db7" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								getComputedStyle(obj,null).属性
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						BD
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">18%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、王栋[162231001331]、要威[19444100305]</span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">29.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">c7fec1a2ace94b3ebc1b50c52c4675e9</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）要获取页面中所有class名为box的元素可以使用以下哪些选择器？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_c7fec1a2ace94b3ebc1b50c52c4675e9" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								querySelectorAll()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_c7fec1a2ace94b3ebc1b50c52c4675e9" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								getElementsByClassName()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_c7fec1a2ace94b3ebc1b50c52c4675e9" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								getElementsByTagName()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_c7fec1a2ace94b3ebc1b50c52c4675e9" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								getElementsByName()
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						AB
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、王志文[17377100217]</span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																	<!-- 多选 -->
+																	<li class="question qt-multiplechoice"
+																		style="display: list-item;"><div
+																			class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">30.</span> <span
+																				class="question-type" style="display: none;">multiplechoice</span>
+																			<span>[多选题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span>
+																			<span class="question-id" style="display: none;">b556309d48104d13ad9b9795428be17d</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）&lt;img src=&#034;img.jpg&#034; /&gt; 要获取该图片的src属性可以使用以下哪些方法或属性？</pre>
+																				
+																				
+																			</p>
+																			<ul class="question-opt-list">
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="A" name="question-radio1_b556309d48104d13ad9b9795428be17d" class="question-input"> -->
+																						<span class="question-li-text">A: 
+																								img.src
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="B" name="question-radio1_b556309d48104d13ad9b9795428be17d" class="question-input"> -->
+																						<span class="question-li-text">B: 
+																								img.getAttribute(&#039;src&#039;)
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="C" name="question-radio1_b556309d48104d13ad9b9795428be17d" class="question-input"> -->
+
+																						<span class="question-li-text">C: 
+																								img.getAttr(&#039;src&#039;)
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																					<li class="question-list-item">
+																						<!-- 																	<input type="radio" --> <!-- 																	value="D" name="question-radio1_b556309d48104d13ad9b9795428be17d" class="question-input"> -->
+
+																						<span class="question-li-text">D: 
+																								img.setAttribute(&#039;src&#039;)
+																							 
+																					</span>
+																					</li>
+																				
+																				
+																				
+
+																			</ul>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						AB
+																					 
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<span>错误率：</span><span style="color:red">29%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、张晨[19444100292]、王志文[17377100217]、王昆鹏[19444100289]、朱静静[17381100279]</span><br>
+																			</div>
+																		</div></li>
+																
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">31.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">7216ca584a78468fa506848b08758ee0</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）触摸事件会在用户手指放在屏幕上面时，在屏幕上滑动时，或从屏幕上移开时触发</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：JS基础，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>候文军[19444100152]、要威[19444100305]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">32.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">cc9afe34947947c8a5547497b52a5919</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)box.onmouseover = function () {console.log(this)}鼠标经过box后打印的结果是box这个DOM元素。</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>张晨[19444100292]、韩舒[19444100316]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">33.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">efe45fe9e8534bd5bef1594702eee0ee</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)所有浏览器都支持event对象，但支持方式不同。</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杨童童[17373100022]、陈坤[19444100301]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">34.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">a50790509c5745b6873a6a1125c34317</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）srcElement是事件对象的一个属性，是单针对IE浏览器用于获取事件源。</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：事件，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">24%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杜锦涛[162231001324]、王志文[17377100217]、王文彪[19444100313]、韩舒[19444100316]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">35.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">8c6f081219ee46859e3b7f0d7238c7ee</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）var user;
+alert(user);
+alert(typeof user); 以上代码在运行时不会报错。</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>朱静静[17381100279]、孙雨萌[19444100318]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">36.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">ef4efadce3f14988917f77692d2c6bf2</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）offsetLeft是用于获取元素距离定位父元素或视口左侧的距离。</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">0%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span></span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">37.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">e2479ee1d7b34f6881cf78aa73b8709b</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)window.history.go(-1)和window.history.back()的作用是返回上一页</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">18%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>候文军[19444100152]、王志文[17377100217]、胡振阳[19444100317]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">38.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">0bf3ef18dbe14c7ab07e1929ffdc42ee</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>(网站)null===undefined的返回结果为true</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						
+																						错
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">29%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>王栋[162231001331]、张晨[19444100292]、朱静静[17381100279]、曹育聪[19444100337]、胡振阳[19444100317]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">39.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">2f26ea91c7d64322a81ba6e8983111ef</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）可以使用+new Date()获取当前时间戳</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">18%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杨童童[17373100022]、陈坤[19444100301]、要威[19444100305]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+															
+																
+																
+																
+																	<!-- 判断 -->
+																	<li class="question qt-trueorfalse"
+																		style="display: list-item;">
+																		<div class="question-title">
+																			<div class="question-title-icon"></div>
+																			<span class="question-no">40.</span><span
+																				class="question-type" style="display: none;">trueorfalse</span>
+																			<span>[判断题]</span> <span
+																				class="question-point-content"><span>(</span><span
+																				class="question-point">2</span><span>分)</span></span><span
+																				class="question-id" style="display: none;">505d46da6f22430ea2badad46828c5fa</span>
+																		</div>
+																		<div class="question-body">
+																			<p class="question-body-text">
+																				
+																					<pre>（网站）new Date(2016,4,9);实际设置的日期为2016年5月9日</pre>
+																				
+																				
+																			</p>
+																		</div>
+																		<div class="answer-desc">
+																			<div class="answer-desc-summary">
+																				<span>正确答案：</span> <span class="answer_value">
+																					
+																						对
+																						
+																					
+																				</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<span>试题解析：</span> <span> 
+																							知识点：分支，来源：历史题
+																						 
+																					</span>
+																				</div>
+																			</div>
+																			<div class="answer-desc-detail">
+																					<span>错误率：</span><span style="color:red">12%</span><br>
+																			</div>
+																			<div class="answer-desc-detail">
+																				<div class="answer-desc-content">
+																					<p></p>
+																				</div>
+																			</div>
+																			<div class="answer-desc-summary">
+																				<span>错题考生姓名及学号：</span><span>杨童童[17373100022]、陈坤[19444100301]</span><br>
+																			</div>
+																		</div>
+																	</li>
+																
+																
+																
+																
+															
+														
+													</ul>
+												</div>
+											</div>
+										</form>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+<script src="http://172.16.10.111:8083/exam_admin/resources//template/vue/vue.min.js"></script>
+<script src="http://172.16.10.111:8083/exam_admin/resources//template/vue/vue-resource.min.js"></script>
+<script src="http://172.16.10.111:8083/exam_admin/resources//template/vue/examTranslate-vue.js"></script>
+<script type="text/javascript"   src="http://172.16.10.111:8083/exam_admin/resources//skin/assets/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript"   src="http://172.16.10.111:8083/exam_admin/resources//skin/assets/js/bootstrap.min.js"></script>
+<script type="text/javascript"   src="http://172.16.10.111:8083/exam_admin/resources//skin/assets/js/beyond.min.js"></script>
+<script type="text/javascript"   src ="http://172.16.10.111:8083/exam_admin/resources/ajaxAnywhere/aa.js"></script>
+<script type="text/javascript"   src ="http://172.16.10.111:8083/exam_admin/resources/app.js"></script>
+<script type="text/javascript"   src ="http://172.16.10.111:8083/exam_admin/resources/jquery/json2.js"></script>
+<script type="text/javascript"   src ="http://172.16.10.111:8083/exam_admin/resources/my97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript"   src ="http://172.16.10.111:8083/exam_admin/resources/moment/moment.js"></script>
+
+<script type="text/javascript">
+	var paper = {};
+	$(function() {
+		examing.initial();
+		var papername="P0078-网站JavaScript前端开发下周考3理论";
+		var prefix=papername.substring(0,6);
+		var name=papername.substring(6,papername.length);
+		$("#name").val(name);
+		$("#name").prev().html(prefix);
+	});
+
+	var examing = {
+
+		initial : function initial() {
+
+			this.updateSummery();
+			this.bindQuestionFilter();
+			this.bindfocus();
+
+		},
+		/**
+		 * 切换考题类型事件
+		 */
+		bindQuestionFilter : function bindQuestionFilter() {
+			$("#exampaper-desc").delegate("span.exampaper-filter-item",
+					"click", function() {
+						var qtype = $(this).find(".efi-qcode").text();
+						examing.doQuestionFilt(qtype);
+					});
+		},
+		/**
+		 * 更新题目简介信息
+		 */
+		updateSummery : function updateSummery() {
+			if ($(".question").length === 0) {
+				$("#exampaper-desc").empty();
+				$("#exampaper-total-point").text(0);
+				return false;
+			}
+			var questiontypes = this.questiontypes;
+			var all = 0;
+			var summery = "";
+			for (var i = 0; i < questiontypes.length; i++) {
+				var question_sum_q = $("." + questiontypes[i].code).length;
+				all += question_sum_q;
+				if (question_sum_q == 0) {
+					continue;
+				} else {
+					summery = summery
+							+ "<span class=\"exampaper-filter-item efi-"
+						+ questiontypes[i].code
+						+ "\">"
+							+ questiontypes[i].name
+							+ "[<span class=\"efi-tno\">"
+							+ $("." + questiontypes[i].code).length
+							+ "</span>]<span class=\"efi-qcode\" style=\"display:none;\">"
+							+ questiontypes[i].code + "</span></span>";
+				}
+			}
+			if (all != 0) {
+				summery = "<span class=\"exampaper-filter-item efi-"
+				+ questiontypes[0].code
+				+ "\">"
+						+ questiontypes[0].name
+						+ "[<span class=\"efi-tno\">"
+						+ all
+						+ "</span>]<span class=\"efi-qcode\" style=\"display:none;\">"
+						+ questiontypes[0].code + "</span></span>" + summery;
+			}
+			$("#exampaper-desc").html(summery);
+			$("#exampaper-desc .efi-" + "qt-all").addClass("efi-selected");
+			examing.refreshTotalPoint();
+
+		},
+
+		/**
+		 * 切换到指定的题型
+		 */
+		doQuestionFilt : function doQuestionFilt(questiontype) {
+
+			if ($("#exampaper-desc .efi-" + questiontype).hasClass(
+					"efi-selected")) {
+				return false;
+			} else {
+				if (questiontype == 'qt-all') {
+					var questions = $("li.question");
+					questions.show();
+					$(".exampaper-filter-item").removeClass("efi-selected");
+					$("#exampaper-desc .efi-" + questiontype).addClass(
+							"efi-selected");
+				} else {
+					var questions = $("li.question");
+					questions.hide();
+					$("#exampaper-body ." + questiontype).show();
+
+					$(".exampaper-filter-item").removeClass("efi-selected");
+					$("#exampaper-desc .efi-" + questiontype).addClass(
+							"efi-selected");
+				}
+			}
+		},
+		questiontypes : new Array({
+			"name" : "全部",
+			"code" : "qt-all",
+			"typecode" : "-1"
+		}, {
+			"name" : "单选题",
+			"code" : "qt-singlechoice",
+			"typecode" : "1"
+		}, {
+			"name" : "多选题",
+			"code" : "qt-multiplechoice",
+			"typecode" : "2"
+		}, {
+			"name" : "判断题",
+			"code" : "qt-trueorfalse",
+			"typecode" : "0"
+		}, {
+			"name" : "填空题(手动判卷)",
+			"code" : "qt-fillblank",
+			"typecode" : "3"
+		}, 
+		{
+			"name" : "填空题(自动判卷)",
+			"code" : "qt-fillblank2",
+			"typecode" : "5"
+		}, {
+			"name" : "问答题",
+			"code" : "qt-shortanswer",
+			"typecode" : "4"
+		}, {
+			"name" : "论述题",
+			"code" : "qt-essay"
+		}, {
+			"name" : "分析题",
+			"code" : "qt-analytical"
+		}),
+
+		/**
+		 * 绑定考题focus事件(点击考题导航)
+		 */
+		bindfocus : function bindfocus() {
+			$("#question-navi").delegate(
+					"a.question-navi-item ",
+					"click",
+					function() {
+						var clickindex = $("a.question-navi-item").index(this);
+						var questions = $("li.question");
+						var targetQuestion = questions[clickindex];
+
+						var targetQuestionType = $(questions[clickindex]).find(
+								".question-type").text();
+
+						examing.doQuestionFilt("qt-" + targetQuestionType);
+						// $(targetQuestion).focus();
+
+						examing.scrollToElement($(targetQuestion));
+					});
+		},
+
+		scrollToElement : function scrollToElement(selector, time,
+				verticalOffset) {
+			time = typeof (time) != 'undefined' ? time : 500;
+			verticalOffset = typeof (verticalOffset) != 'undefined' ? verticalOffset
+					: 0;
+			element = $(selector);
+			offset = element.offset();
+			offsetTop = offset.top + verticalOffset;
+			$('html, body').animate({
+				scrollTop : offsetTop
+			}, time);
+		},
+		/**
+		 * 计算总分
+		 */
+		refreshTotalPoint : function refreshTotalPoint() {
+			var question_sum_p_all = 0;
+			var point_array = $(".question-point");
+			for (var i = 0; i < point_array.length; i++) {
+				var pointtmp = parseFloat($(point_array[i]).text());
+
+				if (isNaN(pointtmp)) {
+					continue;
+				} else {
+					question_sum_p_all = question_sum_p_all + pointtmp * 10;
+				}
+			}
+			$("#exampaper-total-point").text(question_sum_p_all / 10);
+		},
+		getType : function getType(input) {
+			var m = (/[\d]+(\.[\d]+)?/).exec(input);
+			if (m) {
+				// Check if there is a decimal place
+				if (m[1]) {
+					return 'float';
+				} else {
+					return 'int';
+				}
+			}
+			return 'string';
+		}
+	};
+</script>
+<script type="text/javascript">
+//-----查看文件列表
+function openFilePage(){
+	window.open("http://172.16.10.111:8083/exam_admin/admin/examfile/querylistNoDe.do?dataTable=exam_paper&dataId="+$("#id").val(), '_blank');
+}
+</script>
+</html>

@@ -1,0 +1,70 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+.box {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.box .top {
+  margin: 8px 0;
+  height: 30px;
+}
+
+.box .top input {
+  height: 26px;
+  vertical-align: middle;
+}
+
+.box .top select {
+  height: 26px;
+  vertical-align: middle;
+}
+
+.box .stu {
+  width: 500px;
+  border: 1px solid #666;
+  border-collapse: collapse;
+}
+
+.box .stu tr {
+  height: 30px;
+}
+
+.box .stu tr td, .box .stu tr th {
+  border: 1px solid #666;
+  text-align: center;
+}
+
+.box .page {
+  text-align: center;
+}
+
+.box .page span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 4px;
+  background-color: #e2e2e2;
+  border-radius: 3px;
+}
+
+.box .page span.active {
+  background-color: #7d7dff;
+  color: #fff;
+}
+
+.box .page span.prev {
+  width: 60px;
+}
+
+.box .page span.next {
+  width: 60px;
+}

@@ -1,0 +1,116 @@
+var arr = [元素,元素]
+
+元素 ==> 可以是任何类型的数据
+	数字
+	字符串
+	数组
+	对象
+	函数
+	null
+	。。。
+
+
+var obj = {
+	属性,
+	属性,
+	属性,
+	属性
+}
+
+属性 ==>   name:value    属性名：属性值
+	name 有没有引号都是字符串类型的
+	value ==> 
+		数字
+		字符串
+		数组
+		对象
+		函数
+		null
+		。。。
+
+
+/*********************************************************/
+一级数据：
+var data = ["imgs/1.jpg","imgs/2.jpg","imgs/3.jpg"]
+
+var data = [
+	{title:"aaaa",content:"afasdfasdfasdfasdfasdfasdf"},
+	{title:"aaaa",content:"afasdfasdfasdfasdfasdfasdf"},
+	{title:"aaaa",content:"afasdfasdfasdfasdfasdfasdf"},
+	{title:"aaaa",content:"afasdfasdfasdfasdfasdfasdf"},
+	{title:"aaaa",content:"afasdfasdfasdfasdfasdfasdf"}
+]
+二级数据：
+var arr = [
+	{title:"商品",erji:[{title:"商品1"},{title:"商品2"},{title:"商品2"}]},
+	{title:"商品",erji:[{title:"商品1"},{title:"商品2"},{title:"商品2"}]},
+	{title:"商品",erji:[{title:"商品1"},{title:"商品2"},{title:"商品2"}]}
+]
+
+/**************************************************************/
+学校：
+{
+	name:"八维",
+	xueyuan:[
+		{
+			name:"网站",
+			class:[
+				{
+					name:"1801A",
+					students:[
+						{name:"韩束"},
+						{name:"韩束2"}
+					]
+				},
+				{name:"1802A"},
+				{name:"1802B"}
+			]
+		},
+		{
+			name:"大数据",
+			class:[
+				{name:"1801A"},
+				{name:"1802A"},
+				{name:"1802B"}
+			]
+		}
+	]
+}
+
+购物车：
+var data = [
+	{title:"aaaaaa",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"},
+	{title:"bbbbb",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"},
+	{title:"ccccc",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"},
+	{title:"dddd",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"},
+	{title:"eeee",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"},
+	{title:"fffff",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"},
+	{title:"kkkkkk",price:1000,src:"1.jpg",num:1,desc:"阿道夫撒是的发送到发送到发斯蒂芬"}
+]
+
+点菜菜单：
+
+var data = [
+	{	
+		name:"菜",
+		type:[
+			{
+				name:"炒菜",
+				type:[
+					"",
+					""
+				]
+			},
+			{name:"炖菜"},
+			{name:"凉菜"}
+		]
+	},
+	{
+		name:"面",
+		type:[
+			{name:"炒面"},
+			{name:"拉面"},
+			{name:"凉面"}
+		]
+	}
+]

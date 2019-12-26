@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul,li{
+    list-style: none;
+}
+.box{
+    width:500px;
+    margin:0 auto;
+    .top{
+        margin:8px 0;
+        height: 30px;
+        input{
+            height:26px;
+            vertical-align: middle;
+        }
+        select{
+            height: 26px;
+            vertical-align: middle;
+        }
+    }
+    .stu{
+        width:500px;
+        border:1px solid #666;
+        border-collapse: collapse;
+        
+        tr{
+            height: 30px;
+            td,th{
+                border:1px solid #666;
+                text-align: center;
+            }
+        }
+    }
+    .page{
+        text-align: center;
+        span{
+            display: inline-block;
+            width:30px;
+            height:30px;
+            line-height:30px;
+            margin:4px;
+            background-color: #e2e2e2;
+            border-radius: 3px;
+            &.active{
+                background-color: #7d7dff;
+                color:#fff;
+            }
+            &.prev{
+                width:60px;
+            }
+            &.next{
+                width:60px;
+            }
+        }
+    }
+
+}

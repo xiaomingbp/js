@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="div1">
+		<div>用户名：<input type="text" class="user"></div>
+		<div>密码：<input type="text" class="pass"></div>
+		<div>手机号：<input type="text" class="tel"></div>
+		<div>验证码<input type="text" class="vertify"><span class="vertify_con"></span></div>
+		<div><input type="button" class="login" value="登录"></div>
+	</div>
+	<script>
+		//获取元素
+		var user = document.querySelector(".user"); // 用户名
+		var pass = document.querySelector(".pass"); // 密码
+		var tel = document.querySelector(".tel");  // 手机号
+		var vertify = document.querySelector(".vertify");  // 验证码（输入框）
+		var vertify_con = document.querySelector(".vertify_con");  //随机验证码
+		var login = document.querySelector(".login"); // 登录按钮
+		
+		//定义正则表达式
+		var user_reg = /^\w{4,8}$/     // 用户名：字母数字下划线组成的4-8位的字符序列
+		var pass_reg = /^\w{8,14}$/    // 密码：字母数字下划线组成的8-14位的字符序列
+		var tel_reg = /^1[3-9]\d{9}$/  // 手机号
+
+		//随机验证码
+		function getvertify(){
+			var str = "";
+			for(var i=0;i<4;i++){
+				str += Math.floor(Math.random() * 10);
+			}
+			return str;
+		}
+		vertify_con.innerHTML = getvertify();
+		vertify_con.addEventListener("click",function(){
+			vertify_con.innerHTML = getvertify();
+		})
+
+
+		//失去焦点时验证
+		user.addEventListener("blur",isuser)
+		function isuser(){
+			if(user_reg.test(user.value)){
+				// 输入框里输入的用户名 ( 匹配 ) 正则的话背景设置（白色）
+				user.style.backgroundColor = "#fff"
+			}else{
+				// 输入框里输入的用户名 ( 不匹配 ) 正则的话背景设置(红色)
+				user.style.backgroundColor = "red"
+			}
+		}
+
+		pass.addEventListener("blur",ispass)
+		function ispass(){
+			if(pass_reg.test(pass.value)){
+				// 输入框里输入的用户名 ( 匹配 ) 正则的话背景设置（白色）
+				pass.style.backgroundColor = "#fff"
+				return true;
+			}else{
+				// 输入框里输入的用户名 ( 不匹配 ) 正则的话背景设置(红色)
+				pass.style.backgroundColor = "red"
+				return false;
+			}
+		}
+
+		tel.addEventListener("blur",istel)
+		function istel(){
+			if(tel_reg.test(tel.value)){
+				// 输入框里输入的用户名 ( 匹配 ) 正则的话背景设置（白色）
+				tel.style.backgroundColor = "#fff"
+				return true;
+			}else{
+				// 输入框里输入的用户名 ( 不匹配 ) 正则的话背景设置(红色)
+				tel.style.backgroundColor = "red"
+				return false;
+			}
+		}
+
+		vertify.addEventListener("blur",isvertify)
+		function isvertify(){
+			if(vertify.value === vertify_con.innerHTML){				
+				return true;
+			}else{
+				alert("验证码不正确")
+				return false;
+			}
+		}
+
+		//登录
+		login.addEventListener("click",function(){
+			if(isuser() && ispass() && istel() && isvertify()){
+				alert("登录成功");
+			}else{
+				alert("登录失败");
+			}
+		})
+
+	</script>
+</body>
+</html>

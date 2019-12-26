@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.magnifier{
+			width:300px;
+			height:300px;			
+			border:1px solid red;
+			position: relative;
+		}
+		.magnifier img{
+			width:300px;
+			height:300px;
+		}
+		.slider{
+			width:80px;
+			height:80px;
+			background-color: rgba(255,255,255,0.5);
+			position: absolute;
+			display: none;
+		}
+		.slider.active{
+			display: block;
+		}
+		.bigimg{
+			width:300px;
+			height:300px;
+			display: none;
+			overflow: hidden;
+			position: relative;
+		}
+		.bigimg>img{
+			position: absolute;
+		}
+		.bigimg.active{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- 原图 -->
+	<div class="magnifier">
+		<img src="imgs/1.jpg" alt="">
+		<div class="slider"></div>
+	</div>
+	<!-- 放大后的图片 -->
+	<div class="bigimg">
+		<img src="imgs/1.jpg" alt="">
+	</div>
+</body>
+<script>
+	
+	function Magnifier(obj){
+		this.box = document.querySelector(obj.box)
+		this.slider = document.querySelector(obj.slider);
+		this.bigimg = document.querySelector(obj.bigimg);
+
+		this.bimg = this.bigimg.children[0]
+
+		this.bindEvent();
+	}
+	Magnifier.prototype.bindEvent = function(){
+		var that = this;
+		var pos = that.box.getBoundingClientRect();
+		console.log(pos)
+		var w = 0;
+		var h = 0;
+		this.box.addEventListener("mouseover",function(){
+
+			that.slider.classList.add("active");
+			that.bigimg.classList.add("active");
+
+			w = that.bigimg.offsetWidth/that.slider.offsetWidth;
+			h = that.bigimg.offsetHeight/that.slider.offsetHeight;
+			
+
+			that.bimg.style.width = that.box.offsetWidth * w +"px"
+			that.bimg.style.height = that.box.offsetHeight * h +"px"
+
+		})
+
+		this.box.addEventListener("mouseout",function(){
+			that.slider.classList.remove("active");
+			that.bigimg.classList.remove("active");
+		})
+
+		document.addEventListener("mousemove",function(e){
+			
+			var x = e.pageX - that.slider.offsetWidth/2 - that.box.offsetLeft;
+			var y = e.pageY - that.slider.offsetHeight/2 - that.box.offsetTop;
+
+			if(x < 0){
+				x = 0
+			}
+			if(x > pos.width - that.slider.offsetWidth){
+				x = pos.width - that.slider.offsetWidth;
+			}
+			if(y < 0){
+				y = 0
+			}
+			if(y > pos.height - that.slider.offsetHeight){
+				y = pos.height - that.slider.offsetHeight;
+			}
+
+			that.slider.style.left = x + "px";
+			that.slider.style.top = y +  "px";	
+
+			that.bimg.style.left = -x * w + "px";	
+			that.bimg.style.top = -y * h + "px";
+		});
+	}
+
+
+
+	new Magnifier({
+		box:".magnifier",
+		slider:".slider",
+		bigimg:".bigimg"
+	});
+</script>
+</html>
